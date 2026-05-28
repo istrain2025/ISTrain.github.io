@@ -101,10 +101,12 @@ nav.sc{background:rgba(6,9,15,.95);backdrop-filter:blur(24px);border-bottom:1px 
   background-color: var(--black);
 }
 
-/* Base image layer */
+/* Base image layer - Forced to 100% size so it cannot shrink to 0px */
 .pbg {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
@@ -118,7 +120,7 @@ nav.sc{background:rgba(6,9,15,.95);backdrop-filter:blur(24px);border-bottom:1px 
   pointer-events: none;
 }
 
-/* SMALL TITLE TEXT - Forced to the very front */
+/* SMALL TITLE TEXT - Forced to the very front with crisp rendering */
 .pbl {
   font-family: "Space Mono", monospace;
   font-size: .7rem;
@@ -126,17 +128,19 @@ nav.sc{background:rgba(6,9,15,.95);backdrop-filter:blur(24px);border-bottom:1px 
   text-transform: uppercase;
   color: var(--bl);
   margin-bottom: .75rem;
-  position: relative; /* Added this to activate the z-index */
-  z-index: 3;        /* Pushes it in front of the fade layer */
+  position: relative; 
+  z-index: 3;        
+  isolation: isolate; 
 }
 
-/* MAIN H1 TEXT - Forced to the very front */
+/* MAIN H1 TEXT - Forced to the very front with crisp rendering */
 .pb h1 {
   font-family: "Bebas Neue", sans-serif;
   font-size: clamp(4rem, 8vw, 8.5rem);
   line-height: .88;
-  position: relative; /* Added this to activate the z-index */
-  z-index: 3;        /* Pushes it in front of the fade layer */
+  position: relative; 
+  z-index: 3;        
+  isolation: isolate; 
 }
 
 .pb h1 span {
