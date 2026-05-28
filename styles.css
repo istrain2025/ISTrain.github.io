@@ -94,13 +94,65 @@ nav.sc{background:rgba(6,9,15,.95);backdrop-filter:blur(24px);border-bottom:1px 
 .cico{font-size:1.3rem;margin-bottom:.8rem;display:block;}.ct{font-family:"Bebas Neue",sans-serif;font-size:1.5rem;color:var(--bl);margin-bottom:.4rem;}.cd{font-size:1rem;color:var(--grey);line-height:1.7;text-align:justify;}
 /* Ticker removed */
 /* PAGE BANNER */
-.pb{position:relative;padding:9.5rem 5rem 4.5rem;overflow:hidden;background:var(--black);}
-.pbg{position:absolute;inset:0;background:rgba(91,163,224,0.03);}
-.pb::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 100% at 75% 50%,rgba(60,133,197,.05),transparent);}
-.pbl{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--bl);margin-bottom:.75rem;position:relative;z-index:1;}
-.pb h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(4rem,8vw,8.5rem);line-height:.88;position:relative;z-index:1;}
-.pb h1 span{color:var(--bl);}
-.pbl2{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(60,133,197,.2),transparent);}
+.pb {
+  position: relative;
+  padding: 9.5rem 5rem 4.5rem;
+  overflow: hidden;
+  background-color: var(--black);
+}
+
+/* Base image layer */
+.pbg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* The FADE overlay layer */
+.pb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(6, 9, 15, 0) 0%, rgba(6, 9, 15, 0.4) 40%, var(--black) 95%);
+  z-index: 2; /* Sits directly over the image */
+  pointer-events: none;
+}
+
+/* SMALL TITLE TEXT - Forced to the very front */
+.pbl {
+  font-family: "Space Mono", monospace;
+  font-size: .7rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--bl);
+  margin-bottom: .75rem;
+  position: relative; /* Added this to activate the z-index */
+  z-index: 3;        /* Pushes it in front of the fade layer */
+}
+
+/* MAIN H1 TEXT - Forced to the very front */
+.pb h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(4rem, 8vw, 8.5rem);
+  line-height: .88;
+  position: relative; /* Added this to activate the z-index */
+  z-index: 3;        /* Pushes it in front of the fade layer */
+}
+
+.pb h1 span {
+  color: var(--bl);
+}
+
+/* Bottom accent line */
+.pbl2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(60, 133, 197, .2), transparent);
+  z-index: 3;
+}
 /* LOCO on home */
 .loco-stage{position:relative;overflow:hidden;border:1px solid rgba(60,133,197,.12);background:#000;border-radius:var(--r);}
 .lspec{font-family:"Space Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(91,163,224,.75);background:rgba(6,9,15,.8);padding:.22rem .55rem;border-left:2px solid var(--bl);}
