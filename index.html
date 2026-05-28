@@ -1,6 +1,17 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>ISTrain</title>    <link rel="stylesheet" href="styles.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head><body><div id="cur"></div><div id="curR"></div><div class="mover" id="dmod"><div class="modal"><button class="mcl" id="mcl">&#x2715;</button><div id="mbody"></div></div></div><div class="mob-nav" id="mobnav"><button class="cx" id="cx">&#x2715;</button><a onclick="go('home')" data-en="Home" data-pt="Inicio">Home</a><a onclick="go('about')" data-en="About Us" data-pt="Sobre Nos">About Us</a><a onclick="go('locomotive')" data-en="Andorinha" data-pt="Andorinha">Andorinha</a><a onclick="go('sponsors')" data-en="Sponsors" data-pt="Patrocinadores">Sponsors</a><a onclick="go('imeche')" data-en="IMechE" data-pt="IMechE">IMechE</a><a onclick="go('join')" data-en="Join" data-pt="Juntar">Join</a><a onclick="go('news')" data-en="News" data-pt="Noticias">News</a><a onclick="go('merch')" data-en="Merchandise" data-pt="Merchandising">Merchandise</a><a onclick="go('contact')" data-en="Contact" data-pt="Contacto">Contact</a><button class="npt" id="mob-lang-btn" onclick="toggleLang()" style="margin-top:.5rem"> PT</button></div><nav id="nav"><div class="nlogo" onclick="go('home')" style="cursor:pointer; display:flex; align-items:center;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>ISTrain</title>    
+    <link rel="stylesheet" href="styles.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="icon" type="image/svg+xml" href="LogoISTrain.svg">
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+</head><body><div id="cur"></div><div id="curR"></div><div class="mover" id="dmod"><div class="modal"><button class="mcl" id="mcl">&#x2715;</button><div id="mbody"></div></div></div><div class="mob-nav" id="mobnav"><button class="cx" id="cx">&#x2715;</button><a onclick="go('home')" data-en="Home" data-pt="Início">Home</a><a onclick="go('about')" data-en="About Us" data-pt="Sobre Nós">About Us</a><a onclick="go('locomotive')" data-en="Andorinha" data-pt="Andorinha">Andorinha</a><a onclick="go('sponsors')" data-en="Sponsors" data-pt="Patrocinadores">Sponsors</a><a onclick="go('imeche')" data-en="IMechE" data-pt="IMechE">IMechE</a><a onclick="go('join')" data-en="Join" data-pt="Adere">Join</a><a onclick="go('news')" data-en="News" data-pt="Notícias">News</a><a onclick="go('merch')" data-en="Merchandise" data-pt="Merchandising">Merchandise</a><a onclick="go('contact')" data-en="Contact" data-pt="Contacto">Contact</a><button class="npt" id="mob-lang-btn" onclick="toggleLang()" style="margin-top:.5rem"> PT</button></div><nav id="nav"><div class="nlogo" onclick="go('home')" style="cursor:pointer; display:flex; align-items:center;">
     <img src="Home/Logo%20Horizontal%20White.png" alt="ISTrain" style="height:40px; width:auto; display:block;">
 </div><ul class="nlinks"><li><a onclick="go('home')" data-p="home" data-en="Home" data-pt="Início">Home</a></li><li><a onclick="go('about')" data-p="about" data-en="About Us" data-pt="Sobre Nós">About Us</a></li><li><a onclick="go('locomotive')" data-p="locomotive" data-en="Andorinha" data-pt="Andorinha">Andorinha</a></li><li><a onclick="go('sponsors')" data-p="sponsors" data-en="Sponsors" data-pt="Patrocinadores">Sponsors</a></li><li><a onclick="go('imeche')" data-p="imeche" data-en="IMechE" data-pt="IMechE">IMechE</a></li><li><a onclick="go('join')" data-p="join" data-en="Join" data-pt="Adere">Join</a></li><li><a onclick="go('news')" data-p="news" data-en="News" data-pt="Notícias">News</a></li><li><a onclick="go('merch')" data-p="merch" data-en="Merchandise" data-pt="Merchandising">Merchandise</a></li><li><a onclick="go('contact')" data-p="contact" data-en="Contact" data-pt="Contacto">Contact</a></li></ul><button class="npt" id="lang-btn" onclick="toggleLang()"> PT</button><div class="mob-btn" id="mbb"><span></span><span></span><span></span></div></nav><div class="page on" id="page-home"><div class="hero">
   <div class="hvid"><video id="hvid" autoplay muted loop playsinline preload="auto"><source src="Home/Hero_Video_Train.mp4" type="video/mp4"></video></div>
@@ -322,8 +333,9 @@
     </div>
   </div>
 </div> <div class="page" id="page-sponsors">
-  <div class="pb" style="position:relative;padding:0;min-height:52vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden">
-    <div class="pbg"></div>
+  <div class="pb" style="position:relative;padding:0;min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden">
+    <div class="pbg" style="position:absolute;inset:0;background-image:url('Sponsors/Foto%20back.png');background-size:cover;background-position:center;background-repeat:no-repeat;"></div>
+    
     <div style="position:absolute;inset:0;overflow:hidden"><div style="position:absolute;inset:0;background:linear-gradient(to top,var(--black) 0%,rgba(6,9,15,.6) 60%,transparent 100%)"></div></div>
     <div style="position:relative;z-index:1;padding:3rem 5rem 3.5rem"><p class="pbl" data-en="Partners" data-pt="Parceiros">Partners</p><h1 data-en="Our <span>Sponsors</span>" data-pt="Os Nossos <span>Patrocinadores</span>">Our <span>Sponsors</span></h1></div>
     <div class="pbl2"></div>
@@ -599,6 +611,15 @@
     </div>
 
     <div class="upd-items">
+
+      <div class="upd-row">
+        <span class="upd-month-col">May 2026</span>
+        <span class="upd-text-col"
+          data-en="Attendance of ISTrain at the Portugal Railway Summit"
+          data-pt="Presença da ISTrain no Portugal Railway Summit">
+          Design Sprint at IST
+        </span>
+      </div>
 
       <div class="upd-row">
         <span class="upd-month-col">May 2026</span>
