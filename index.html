@@ -442,44 +442,58 @@
     <p style="color:var(--grey); font-size:.9rem; margin-top:.5rem" data-en="Click on a trophy to celebrate our team's victories!" data-pt="Clica num troféu para celebrar as vitórias da nossa equipa!">Click on a trophy to celebrate our team's victories!</p>
   </div>
 
-  <!-- Hard-Locked 3-2 Centered Layout Container -->
-<div style="max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; position: relative; z-index: 2;">
+<!-- ========================================== -->
+<!-- ISTrain Cropped Photo & Achievements Layout-->
+<!-- ========================================== -->
+<div style="max-width: 1400px; margin: 0 auto; padding: 0 1rem; display: flex; flex-direction: column; gap: 3rem; position: relative; z-index: 2;">
   
-  <!-- Trophy 1 (Top Row) -->
-  <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 calc(33.333% - 1.5rem); min-width: 300px; max-width: 360px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden;">
-    <div style="font-size:3rem; margin-bottom:1rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
-    <h3 style="font-size:1.2rem; font-weight:700; color:#ffffff; margin-bottom:0.5rem;" data-en="Best Entry-Level Team" data-pt="Melhor Equipa de Estreia">Best Entry-Level Team</h3>
-    <p style="color:var(--off); font-size:0.85rem; line-height:1.5; font-weight:300;" data-en="Recognizing the top-performing newcomer team for execution, teamwork, and track performance." data-pt="Reconhecimento da equipa estreante com melhor desempenho em execução, trabalho de equipa e pista.">Recognizing the top-performing newcomer team for execution, teamwork, and track performance.</p>
+  <!-- BOVENKANT: Teamfoto gecropt tot het middel -->
+  <div style="width: 100%; border: 1px solid rgba(60,133,197,.16); border-radius: var(--r); background: rgba(60,133,197,.02); padding: 1.2rem; box-sizing: border-box;">
+    <!-- De container bepaalt de maximale hoogte (380px is perfect voor uitsnede tot middel) -->
+    <div style="width: 100%; height: 380px; overflow: hidden; border-radius: calc(var(--r) - 4px);">
+      <img src="IMechE%20Railway/ISTrain_IMECHE_2026.jpg" alt="ISTrain Team at IMechE 2026" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block;" loading="lazy">
+    </div>
   </div>
 
-  <!-- Trophy 2 (Top Row) -->
-  <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 calc(33.333% - 1.5rem); min-width: 300px; max-width: 360px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden;">
-    <div style="font-size:3rem; margin-bottom:1rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
-    <h3 style="font-size:1.2rem; font-weight:700; color:#ffffff; margin-bottom:0.5rem;" data-en="Entry-Level Innovation Challenge" data-pt="Desafio de Inovação (Estreantes)">Entry-Level Innovation Challenge</h3>
-    <p style="color:var(--off); font-size:0.85rem; line-height:1.5; font-weight:300;" data-en="Awarded for engineering ingenuity, creative problem-solving, and novel design elements in the locomotive." data-pt="Atribuído pela engenharia engenhosa, resolução criativa de problemas e elementos inovadores no design da locomotiva.">Awarded for engineering ingenuity, creative problem-solving, and novel design elements in the locomotive.</p>
-  </div>
+  <!-- ONDERKANT: De 5 prijzenboxjes mooi op één rij -->
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; width: 100%;">
+    
+    <!-- Trophy 1 -->
+    <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 230px; max-width: 260px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.2rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden; display: flex; flex-direction: column; justify-content: flex-start;">
+      <div style="font-size:2.8rem; margin-bottom:0.8rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
+      <h3 style="font-size:1.1rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem; min-height: 2.8rem; display: flex; align-items: center; justify-content: center;" data-en="Best Entry-Level Team" data-pt="Melhor Equipa de Estreia">Best Entry-Level Team</h3>
+      <p style="color:var(--off); font-size:0.82rem; line-height:1.4; font-weight:300; margin: 0;" data-en="Recognizing the top-performing newcomer team for execution, teamwork, and track performance." data-pt="Reconhecimento da equipa estreante com melhor desempenho em execução, trabalho de equipa e pista.">Recognizing the top-performing newcomer team for execution, teamwork, and track performance.</p>
+    </div>
 
-  <!-- Trophy 3 (Top Row) -->
-  <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 calc(33.333% - 1.5rem); min-width: 300px; max-width: 360px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden;">
-    <div style="font-size:3rem; margin-bottom:1rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
-    <h3 style="font-size:1.2rem; font-weight:700; color:#ffffff; margin-bottom:0.5rem;" data-en="Entry-Level Tech & Aesthetic Poster" data-pt="Poster Técnico e Estético (Estreantes)">Entry-Level Tech & Aesthetic Poster</h3>
-    <p style="color:var(--off); font-size:0.85rem; line-height:1.5; font-weight:300;" data-en="Recognizing excellence in visual communication, technical clarity, and aesthetic design presentation." data-pt="Reconhecimento da excelência em comunicação visual, clareza técnica e apresentação estética do projeto.">Recognizing excellence in visual communication, technical clarity, and aesthetic design presentation.</p>
-  </div>
+    <!-- Trophy 2 -->
+    <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 230px; max-width: 260px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.2rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden; display: flex; flex-direction: column; justify-content: flex-start;">
+      <div style="font-size:2.8rem; margin-bottom:0.8rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
+      <h3 style="font-size:1.1rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem; min-height: 2.8rem; display: flex; align-items: center; justify-content: center;" data-en="Entry-Level Innovation Challenge" data-pt="Desafio de Inovação (Estreantes)">Entry-Level Innovation Challenge</h3>
+      <p style="color:var(--off); font-size:0.82rem; line-height:1.4; font-weight:300; margin: 0;" data-en="Awarded for engineering ingenuity, creative problem-solving, and novel design elements in the locomotive." data-pt="Atribuído pela engenharia engenhosa, resolução criativa de problemas e elementos inovadores no design da locomotiva.">Awarded for engineering ingenuity, creative problem-solving, and novel design elements in the locomotive.</p>
+    </div>
 
-  <!-- Trophy 4 (Bottom Row - Centered) -->
-  <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 calc(33.333% - 1.5rem); min-width: 300px; max-width: 360px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden;">
-    <div style="font-size:3rem; margin-bottom:1rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
-    <h3 style="font-size:1.2rem; font-weight:700; color:#ffffff; margin-bottom:0.5rem;" data-en="CAD Challenge" data-pt="Desafio de CAD">CAD Challenge</h3>
-    <p style="color:var(--off); font-size:0.85rem; line-height:1.5; font-weight:300;" data-en="Honoring precision engineering, meticulous digital modeling, and robust virtual architecture." data-pt="Homenagem à engenharia de precisão, modelação digital meticulosa e arquitetura virtual robusta.">Honoring precision engineering, meticulous digital modeling, and robust virtual architecture.</p>
-  </div>
+    <!-- Trophy 3 -->
+    <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 230px; max-width: 260px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.2rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden; display: flex; flex-direction: column; justify-content: flex-start;">
+      <div style="font-size:2.8rem; margin-bottom:0.8rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
+      <h3 style="font-size:1.1rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem; min-height: 2.8rem; display: flex; align-items: center; justify-content: center;" data-en="Entry-Level Tech & Poster" data-pt="Poster Técnico e Estético (Estreantes)">Entry-Level Tech & Poster</h3>
+      <p style="color:var(--off); font-size:0.82rem; line-height:1.4; font-weight:300; margin: 0;" data-en="Recognizing excellence in visual communication, technical clarity, and aesthetic design presentation." data-pt="Reconhecimento da excelência em comunicação visual, clareza técnica e apresentação estética do projeto.">Recognizing excellence in visual communication, technical clarity, and aesthetic design presentation.</p>
+    </div>
 
-  <!-- Trophy 5 (Bottom Row - Centered) -->
-  <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 calc(33.333% - 1.5rem); min-width: 300px; max-width: 360px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden;">
-    <div style="font-size:3rem; margin-bottom:1rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
-    <h3 style="font-size:1.2rem; font-weight:700; color:#ffffff; margin-bottom:0.5rem;" data-en="Overall Business Case" data-pt="Caso de Negócio Geral">Overall Business Case</h3>
-    <p style="color:var(--off); font-size:0.85rem; line-height:1.5; font-weight:300;" data-en="Awarded for the most viable, well-researched, and professionally presented commercial strategy." data-pt="Atribuído à estratégia comercial mais viável, bem fundamentada e profissionalmente apresentada.">Awarded for the most viable, well-researched, and professionally presented commercial strategy.</p>
-  </div>
+    <!-- Trophy 4 -->
+    <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 230px; max-width: 260px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.2rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden; display: flex; flex-direction: column; justify-content: flex-start;">
+      <div style="font-size:2.8rem; margin-bottom:0.8rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
+      <h3 style="font-size:1.1rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem; min-height: 2.8rem; display: flex; align-items: center; justify-content: center;" data-en="CAD Challenge" data-pt="Desafio de CAD">CAD Challenge</h3>
+      <p style="color:var(--off); font-size:0.82rem; line-height:1.4; font-weight:300; margin: 0;" data-en="Honoring precision engineering, meticulous digital modeling, and robust virtual architecture." data-pt="Homenagem à engenharia de precisão, modelação digital meticulosa e arquitetura virtual robusta.">Honoring precision engineering, meticulous digital modeling, and robust virtual architecture.</p>
+    </div>
 
+    <!-- Trophy 5 -->
+    <div class="trophy-card" onclick="celebrateAward(this)" style="flex: 1 1 230px; max-width: 260px; background:var(--dark2); border:1px solid rgba(60,133,197,.12); border-radius:var(--r); padding:2rem 1.2rem; text-align:center; cursor:pointer; transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position:relative; overflow:hidden; display: flex; flex-direction: column; justify-content: flex-start;">
+      <div style="font-size:2.8rem; margin-bottom:0.8rem; filter:drop-shadow(0 4px 10px rgba(201,168,76,0.3));">🏆</div>
+      <h3 style="font-size:1.1rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem; min-height: 2.8rem; display: flex; align-items: center; justify-content: center;" data-en="Overall Business Case" data-pt="Caso de Negócio Geral">Overall Business Case</h3>
+      <p style="color:var(--off); font-size:0.82rem; line-height:1.4; font-weight:300; margin: 0;" data-en="Awarded for the most viable, well-researched, and professionally presented commercial strategy." data-pt="Atribuído à estratégia comercial mais viável, bem fundamentada e profissionalmente apresentada.">Awarded for the most viable, well-researched, and professionally presented commercial strategy.</p>
+    </div>
+
+  </div>
 </div>
 </div>
   <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(60,133,197,.16),transparent)"></div>
