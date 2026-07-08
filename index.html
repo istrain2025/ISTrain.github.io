@@ -1121,17 +1121,106 @@
 </div><div class="page" id="page-merch">
   <div class="pb"><div class="pbg"></div><p class="pbl" data-en="Official Store" data-pt="Loja Oficial">Official Store</p><h1 data-en="ISTrain <span>Merchandise</span>" data-pt="<span>Merchandise</span> do ISTrain">ISTrain <span>Merchandise</span></h1><div class="pbl2"></div></div>
   <div class="sec" style="background:var(--dark)">
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem">
-      <div class="mc rv">
-        <div class="mi"><img src="Merchandise/Polo's.png" alt="ISTrain Polo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-        <div class="mb"><div class="mn" data-en="ISTrain Polo" data-pt="Polo ISTrain">ISTrain Polo</div><p class="md" data-en="Black polo shirt with blue cuffs, featuring sponsor logos on the back." data-pt="Polo preto com punhos azuis, com logótipos dos patrocinadores nas costas.">Black polo shirt with blue cuffs, featuring sponsor logos on the back.</p><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem"><span style="font-family:Space Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)" data-en="Order via Contact" data-pt="Encomendar via Contacto">Order via Contact</span><button class="btn bs" onclick="go('contact')" data-en="Order &rarr;" data-pt="Encomendar &rarr;">Order &#8594;</button></div></div>
-      </div>
-      <div class="mc rv" style="transition-delay:.1s">
-        <div class="mi"><img src="Merchandise/Quarter Zipper.png" alt="ISTrain Quarter Zip" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-        <div class="mb"><div class="mn" data-en="ISTrain Quarter Zip" data-pt="Camisola Quarter Zip ISTrain">ISTrain Quarter Zip</div><p class="md" data-en="Clean black quarter zip with team branding and sponsor logos." data-pt="Camisola quarter zip preta com a identidade da equipa e logótipos dos patrocinadores.">Clean black quarter zip with team branding and sponsor logos.</p><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem"><span style="font-family:Space Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)" data-en="Order via Contact" data-pt="Encomendar via Contacto">Order via Contact</span><button class="btn bs" onclick="go('contact')" data-en="Order &rarr;" data-pt="Encomendar &rarr;">Order &#8594;</button></div></div>
+  <!-- Flexibele grid met maximaal 3 kolommen op een rij -->
+  <div class="sec" style="background:var(--dark)">
+  <!-- Harde limiet van maximaal 3 kolommen via grid-template-columns -->
+  <style>
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    /* Zorg dat het op tablets en mobiel nog wel netjes meeschaalt */
+    @media (max-width: 992px) {
+      .merch-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .merch-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <div class="merch-grid">
+    
+    <!-- 1. De Bestaande Polo -->
+    <div class="mc rv">
+      <div class="mi"><img src="Merchandise/Polo's.png" alt="ISTrain Polo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="mb">
+        <div class="mn" data-en="ISTrain Black Polo" data-pt="Polo Preto ISTrain">ISTrain Black Polo</div>
+        <p class="md" data-en="Black polo shirt with blue cuffs, featuring sponsor logos on the back." data-pt="Polo preto com punhos azuis, com logótipos dos patrocinadores nas costas.">Black polo shirt with blue cuffs, featuring sponsor logos on the back.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <span style="font-family:Space Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)" data-en="Order via Contact" data-pt="Encomendar via Contacto">Order via Contact</span>
+          <button class="btn bs" onclick="go('contact')" data-en="Order &rarr;" data-pt="Encomendar &rarr;">Order &#8594;</button>
+        </div>
       </div>
     </div>
+
+    <!-- 2. De Lichtblauwe Polo -->
+    <div class="mc rv" style="transition-delay:.05s">
+      <div class="mi"><img src="Merchandise/Poloblue.png" alt="ISTrain Blue Polo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="mb">
+        <div class="mn" data-en="ISTrain Track Blue Polo" data-pt="Polo Azul ISTrain">ISTrain Track Blue Polo</div>
+        <p class="md" data-en="Premium light blue polo shirt, styled for the track with official team embroidery." data-pt="Polo azul-claro premium, desenhado para a pista com o bordado oficial da equipa.">Premium light blue polo shirt, styled for the track with official team embroidery.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <span style="font-family:Space Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)" data-en="Order via Contact" data-pt="Encomendar via Contacto">Order via Contact</span>
+          <button class="btn bs" onclick="go('contact')" data-en="Order &rarr;" data-pt="Encomendar &rarr;">Order &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. De Bestaande Quarter Zip -->
+    <div class="mc rv" style="transition-delay:.1s">
+      <div class="mi"><img src="Merchandise/Quarter Zipper.png" alt="ISTrain Quarter Zip" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="mb">
+        <div class="mn" data-en="ISTrain Quarter Zip" data-pt="Camisola Quarter Zip ISTrain">ISTrain Quarter Zip</div>
+        <p class="md" data-en="Clean black quarter zip with team branding and sponsor logos." data-pt="Camisola quarter zip preta com a identidade da equipa e logótipos dos patrocinadores.">Clean black quarter zip with team branding and sponsor logos.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <span style="font-family:Space Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)" data-en="Order via Contact" data-pt="Encomendar via Contacto">Order via Contact</span>
+          <button class="btn bs" onclick="go('contact')" data-en="Order &rarr;" data-pt="Encomendar &rarr;">Order &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Het Witte T-Shirt -->
+    <div class="mc rv" style="transition-delay:.15s">
+      <div class="mi"><img src="Merchandise/Whiteshirt.jpg" alt="ISTrain White Shirt" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="mb">
+        <div class="mn" data-en="ISTrain Classic White Tee" data-pt="T-Shirt Branca Clássica ISTrain">ISTrain Classic White Tee</div>
+        <p class="md" data-en="Comfortable, lightweight white cotton t-shirt featuring the signature minimalist team logo." data-pt="T-shirt de algodão branca, confortável e leve, com o logótipo minimalista de assinatura da equipa.">Comfortable, lightweight white cotton t-shirt featuring the signature minimalist team logo.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <span style="font-family:Space Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)" data-en="Order via Contact" data-pt="Encomendar via Contacto">Order via Contact</span>
+          <button class="btn bs" onclick="go('contact')" data-en="Order &rarr;" data-pt="Encomendar &rarr;">Order &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. De Regenjas -->
+    <div class="mc rv" style="transition-delay:.2s">
+      <div class="mi"><img src="Merchandise/Rainjacket.jpg" alt="ISTrain Rainjacket" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="mb">
+        <div class="mn" data-en="ISTrain Paddock Rainjacket" data-pt="Casaco Impermeável ISTrain">ISTrain Paddock Rainjacket</div>
+        <p class="md" data-en="Waterproof and windresistant technical jacket, engineered to withstand unpredictable track weather." data-pt="Casaco técnico impermeável e resistente ao vento, projetado para suportar o clima imprevisível da pista.">Waterproof and windresistant technical jacket, engineered to withstand unpredictable track weather.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <span style="font-family:Space Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)" data-en="Order via Contact" data-pt="Encomendar via Contacto">Order via Contact</span>
+          <button class="btn bs" onclick="go('contact')" data-en="Order &rarr;" data-pt="Encomendar &rarr;">Order &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. De Cap -->
+    <div class="mc rv" style="transition-delay:.25s">
+      <div class="mi"><img src="Merchandise\Cap.png" alt="ISTrain Cap" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="mb">
+        <div class="mn" data-en="ISTrain Team Cap" data-pt="Boné da Equipa ISTrain">ISTrain Team Cap</div>
+        <p class="md" data-en="Classic structured cap with an adjustable strap, embroidered with the official ISTrain insignia." data-pt="Boné estruturado clássico com fivela ajustável, bordado com a insígnia oficial do ISTrain.">Classic structured cap with an adjustable strap, embroidered with the official ISTrain insignia.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <span style="font-family:Space Mono,monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)" data-en="Order via Contact" data-pt="Encomendar via Contacto">Order via Contact</span>
+          <button class="btn bs" onclick="go('contact')" data-en="Order &rarr;" data-pt="Encomendar &rarr;">Order &#8594;</button>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
 </div><div class="page" id="page-contact">
   <div class="pb"><div class="pbg"></div><p class="pbl" data-en="Reach Out" data-pt="Contactar">Reach Out</p><h1 data-en="Get in <span>Touch</span>" data-pt="Entra em <span>Contacto</span>">Get in <span>Touch</span></h1><div class="pbl2"></div></div>
   <div class="sec" style="background:var(--dark)">
