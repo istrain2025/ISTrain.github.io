@@ -456,3 +456,11 @@ a:has(img[src*="siemens" i]) img {
     object-fit: contain;     /* Prevents the logo from stretching or distorting */
     padding: 5px;            /* Optional breathing room around the edges */
 }
+  .trophy-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--bl) !important;
+    box-shadow: 0 10px 25px rgba(60,133,197,0.15);
+  }
+  .trophy-card:active {
+    transform: scale(0.97);
+  }
