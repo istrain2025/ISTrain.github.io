@@ -40,10 +40,24 @@
     <p style="color:var(--off);font-weight:300;margin:1.4rem 0;text-align:justify" data-en="ISTrain is the first Portuguese student team dedicated to competing in international railway challenges. Founded in 2024 at IST, we design, build and test reduced-scale electric locomotives." data-pt="O ISTrain é a primeira equipa portuguesa dedicada a competir em desafios ferroviários internacionais. Fundada em 2024 no IST, projetamos, construímos e testamos locomotivas elétricas em escala reduzida.">ISTrain is the first Portuguese student team dedicated to competing in international railway challanges. Founded in 2024 at IST, we design, build and test reduced-scale electric locomotives.</p>
     <button class="btn bg" onclick="go('about')" data-en="Read our story &rarr;" data-pt="Ler a nossa história &rarr;">Read our story &#8594;</button>
   </div>
-  <div class="gcol rr">
-    <a class="card" onclick="go('imeche')"><span class="cico">&#127942;</span><div class="ct">IMechE Railway Challenge</div><p class="cd" data-en="The most prestigious student railway engineering competition in the UK." data-pt="A mais prestigiada competição estudantil de engenharia ferroviária no Reino Unido.">The most prestigious student railway engineering competition in the UK.</p></a>
-    <div class="card" style="cursor: default;">
-  <span class="cico">&#9889;</span>
+<div class="gcol rr">
+  <!-- De IMechE Kaart -->
+  <a class="card" onclick="go('imeche')" style="display: flex; flex-direction: column; justify-content: space-between; text-decoration: none;">
+    <div>
+      <span class="cico">&#127942;</span>
+      <div class="ct">IMechE Railway Challenge</div>
+      <p class="cd" data-en="The most prestigious student railway engineering competition in the UK." data-pt="A mais prestigiada competição estudantil de engenharia ferroviária no Reino Unido.">The most prestigious student railway engineering competition in the UK.</p>
+    </div>
+
+    <!-- Witte Knop binnenin de box met de nieuwe tekst -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 100%; margin-top: 1.2rem; padding: 0.75rem 1rem; background: #ffffff; border-radius: var(--r); color: #111111; font-family: inherit; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.01em; transition: all 0.2s ease; box-sizing: border-box; box-shadow: 0 4px 12px rgba(255,255,255,0.1);" onmouseover="this.style.background='#f0f0f0'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='#ffffff'; this.style.transform='translateY(0)';" data-en="See IMechE 2026 Railway Challenge results of ISTrain" data-pt="Ver resultados do IMechE 2026 Railway Challenge da ISTrain">
+      See IMechE 2026 Railway Challenge results of ISTrain
+    </span>
+  </a>
+
+  <!-- De bliksemkaart die eronder staat -->
+  <div class="card" style="cursor: default;">
+    <span class="cico">&#9889;</span>
   <div class="ct" data-en="Alpha Trains European Railway Challenge" data-pt="Alpha Trains European Railway Challenge">
     Alpha Trains European Railway Challenge
   </div>
