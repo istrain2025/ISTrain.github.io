@@ -26,8 +26,7 @@ var DEPTS={
   members: [
     { n: "Manuel Barreiras", r: { en: "Department Leader", pt: "Líder de Departamento" } },
     { n: "Francisco Teixeira", r: { en: "Member", pt: "Membro" } },
-    { n: "Miguel Martins", r: { en: "Member", pt: "Membro" } },
-    { n: "Miguel Meninas", r: { en: "Member", pt: "Membro" } }
+    { n: "Miguel Martins", r: { en: "Member", pt: "Membro" } }
   ]
 },
   dynamics:{name:{en:"Vehicle Dynamics",pt:"Dinâmica do Veículo"},col:"#7ecba1",desc:{en:"Bogies, suspension, braking systems and ride comfort analysis.",pt:"Bogies, suspensão, sistemas de travagem e análise de conforto."},members:[{n:"Daniel Ferreira",r:{en:"Department Leader",pt:"Líder de Departamento"}},{n:"Rafael Coimbra",r:{en:"Member",pt:"Membro"}},{n:"Duarte Soares",r:{en:"Member",pt:"Membro"}},{n:"Joao Basilio",r:{en:"Member",pt:"Membro"}},{n:"Lourenco Vieira",r:{en:"Member",pt:"Membro"}},{n:"Rita Brigido",r:{en:"Member",pt:"Membro"}},{n:"Teresa de Brito",r:{en:"Member",pt:"Membro"}}]},
