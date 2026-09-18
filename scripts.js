@@ -123,3 +123,28 @@ setInterval(tick,1000);tick();
 var hv=document.getElementById("hvid");if(hv){hv.muted=true;var _p=function(){hv.play().catch(function(){});};_p();document.addEventListener("click",_p,{once:true});setTimeout(_p,500);}
 
 buildGrids();applyLang();
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("announcementModal");
+  const closeBtn = document.getElementById("closeModalBtn");
+
+  // Toon de pop-up na 0.5 seconde als de pagina geladen is
+  setTimeout(function () {
+    if (modal) {
+      modal.classList.add("show");
+    }
+  }, 500);
+
+  // Sluit de pop-up bij het klikken op het kruisje
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      modal.classList.remove("show");
+    });
+  }
+
+  // Sluit de pop-up als er buiten het venster/afbeelding wordt geklikt
+  window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal.classList.remove("show");
+    }
+  });
+});
