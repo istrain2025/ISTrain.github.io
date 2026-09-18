@@ -50,14 +50,23 @@ document.getElementById("mbb").addEventListener("click",function(){document.getE
 document.getElementById("cx").addEventListener("click",function(){document.getElementById("mobnav").classList.remove("open");});
 window.addEventListener("scroll",function(){var n=document.getElementById("nav");if(n)n.classList.toggle("sc",scrollY>60);});
 
-(function(){var ms=[{date:new Date("2025-05-01"),en:"May 2025",pt:"Mai 2025",ten:"Railway Summit",tpt:"Cimeira Ferroviária"},{date:new Date("2025-06-01"),en:"Jun 2025",pt:"Jun 2025",ten:"Start design",tpt:"Início do Design"},{date:new Date("2025-09-01"),en:"Sep 2025",pt:"Set 2025",ten:"Design Freeze",tpt:"Congelamento do Design"},{date:new Date("2025-12-01"),en:"Dec 2025",pt:"Dez 2025",ten:"Start manufacturing",tpt:"Início do Fabrico"},{date:new Date("2026-03-01"),en:"Mar 2026",pt:"Mar 2026",ten:"Testing",tpt:"Testes"},{date:new Date("2026-06-01"),en:"Jun 2026",pt:"Jun 2026",ten:"IMechE Challenge",tpt:"Desafio IMechE"}];
-var now=new Date(),total=ms[ms.length-1].date-ms[0].date;
-var prog=Math.max(0,Math.min(1,(now-ms[0].date)/total));
-var fe=document.getElementById("tl-fill"),ge=document.getElementById("tl-glow");
-if(fe)setTimeout(function(){fe.style.width=(prog*100)+"%";if(ge)ge.style.left=(prog*100)+"%";},300);
-var de=document.getElementById("tl-dots"),me=document.getElementById("tl-milestones");if(!de||!me)return;
-var dh="",mh="";ms.forEach(function(m,i){var pct=(m.date-ms[0].date)/total*100;var isDone=now>m.date;var isCur=i===ms.reduce(function(c,x,j){return now>=x.date?j:c;},-1);var st=isCur?"cur":isDone?"done":"future";dh+='<div class="tl-dot '+st+'" style="left:'+pct+'%"></div>';mh+='<div class="tl-ms" style="left:'+pct+'%"><div class="tl-ms-date '+st+'" data-en="'+m.en+'" data-pt="'+m.pt+'">'+m.en+'</div><div class="tl-ms-label '+st+'" data-en="'+m.ten+'" data-pt="'+m.tpt+'">'+m.ten+'</div></div>';});
-de.innerHTML=dh;me.innerHTML=mh;})();
+(function(){
+  var ms=[
+    {date:new Date("2026-09-01"),en:"Sep 2026",pt:"Set 2026",ten:"Rollout",tpt:"Rollout"},
+    {date:new Date("2026-10-01"),en:"Oct 2026",pt:"Out 2026",ten:"Testing Andorinha",tpt:"Testes Andorinha"},
+    {date:new Date("2026-11-01"),en:"Nov 2026",pt:"Nov 2026",ten:"Web Summit",tpt:"Web Summit"},
+    {date:new Date("2027-05-01"),en:"May 2027",pt:"Mai 2027",ten:"Portugal Railway Summit",tpt:"Portugal Railway Summit"},
+    {date:new Date("2027-06-01"),en:"Jun 2027",pt:"Jun 2027",ten:"European Railway Challenge & IMechE Railway Challenge",tpt:"European Railway Challenge & IMechE Railway Challenge"}
+  ];
+  var now=new Date(),total=ms[ms.length-1].date-ms[0].date;
+  var prog=Math.max(0,Math.min(1,(now-ms[0].date)/total));
+  var fe=document.getElementById("tl-fill"),ge=document.getElementById("tl-glow");
+  if(fe)setTimeout(function(){fe.style.width=(prog*100)+"%";if(ge)ge.style.left=(prog*100)+"%";},300);
+  var de=document.getElementById("tl-dots"),me=document.getElementById("tl-milestones");if(!de||!me)return;
+  var dh="",mh="";ms.forEach(function(m,i){var pct=(m.date-ms[0].date)/total*100;var isDone=now>m.date;var isCur=i===ms.reduce(function(c,x,j){return now>=x.date?j:c;},-1);var st=isCur?"cur":isDone?"done":"future";dh+='<div class="tl-dot '+st+'" style="left:'+pct+'%"></div>';mh+='<div class="tl-ms" style="left:'+pct+'%"><div class="tl-ms-date '+st+'" data-en="'+m.en+'" data-pt="'+m.pt+'">'+m.en+'</div><div class="tl-ms-label '+st+'" data-en="'+m.ten+'" data-pt="'+m.tpt+'">'+m.ten+'</div></div>';});
+  de.innerHTML=dh;me.innerHTML=mh;
+})();
+
 var dkeys=["structures","powertrain","dynamics","electronics","marketing"];
 var dnums=["01","02","03","04","05"];
 function buildGrids(){
