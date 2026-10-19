@@ -51,20 +51,80 @@ document.getElementById("cx").addEventListener("click",function(){document.getEl
 window.addEventListener("scroll",function(){var n=document.getElementById("nav");if(n)n.classList.toggle("sc",scrollY>60);});
 
 (function(){
-  var ms=[
+  var ms = [
     {date:new Date("2026-09-01"),en:"Sep 2026",pt:"Set 2026",ten:"Rollout",tpt:"Rollout"},
     {date:new Date("2026-10-01"),en:"Oct 2026",pt:"Out 2026",ten:"Testing Andorinha",tpt:"Testes Andorinha"},
     {date:new Date("2026-11-01"),en:"Nov 2026",pt:"Nov 2026",ten:"Web Summit",tpt:"Web Summit"},
     {date:new Date("2027-05-01"),en:"May 2027",pt:"Mai 2027",ten:"Portugal Railway Summit",tpt:"Portugal Railway Summit"},
     {date:new Date("2027-06-01"),en:"Jun 2027",pt:"Jun 2027",ten:"European Railway Challenge & IMechE Railway Challenge",tpt:"European Railway Challenge & IMechE Railway Challenge"}
   ];
-  var now=new Date(),total=ms[ms.length-1].date-ms[0].date;
-  var prog=Math.max(0,Math.min(1,(now-ms[0].date)/total));
-  var fe=document.getElementById("tl-fill"),ge=document.getElementById("tl-glow");
-  if(fe)setTimeout(function(){fe.style.width=(prog*100)+"%";if(ge)ge.style.left=(prog*100)+"%";},300);
-  var de=document.getElementById("tl-dots"),me=document.getElementById("tl-milestones");if(!de||!me)return;
-  var dh="",mh="";ms.forEach(function(m,i){var pct=(m.date-ms[0].date)/total*100;var isDone=now>m.date;var isCur=i===ms.reduce(function(c,x,j){return now>=x.date?j:c;},-1);var st=isCur?"cur":isDone?"done":"future";dh+='<div class="tl-dot '+st+'" style="left:'+pct+'%"></div>';mh+='<div class="tl-ms" style="left:'+pct+'%"><div class="tl-ms-date '+st+'" data-en="'+m.en+'" data-pt="'+m.pt+'">'+m.en+'</div><div class="tl-ms-label '+st+'" data-en="'+m.ten+'" data-pt="'+m.tpt+'">'+m.ten+'</div></div>';});
-  de.innerHTML=dh;me.innerHTML=mh;
+
+  var startDate = ms[0].date;
+  var endDate = ms[ms.length-1].date;
+  var totalSpan = endDate - startDate;
+  var now = new Date();
+  var prog = Math.max(0, Math.min(1, (now - startDate) / totalSpan));
+
+  var ge = document.getElementById("tl-glow");
+  if(ge) setTimeout(function(){ ge.style.left = (prog * 100) + "%"; }, 300);
+
+  var tiesContainer = document.getElementById("tl-ties");
+  var milestonesContainer = document.getElementById("tl-milestones");
+  if(!tiesContainer || !milestonesContainer) return;
+
+  // 1. Bereken de percentages van de mijlpalen
+  var msIndices = [];
+  var TOTAL_TIES = 65; // Totaal aantal strakke bielsen over het spoor
+
+  ms.forEach(function(m){
+    var pct = (m.date - startDate) / totalSpan;
+    // Zoek welke biels (0 t/m 64) het dichtst bij de mijlpaal ligt
+    var closestIdx = Math.round(pct * (TOTAL_TIES - 1));
+    msIndices.push(closestIdx);
+  });
+
+  // 2. Genereer een perfect regelmatig grid van bielsen
+  var tiesHtml = "";
+  for(var i = 0; i < TOTAL_TIES; i++) {
+    var pct = (i / (TOTAL_TIES - 1)) * 100;
+    var tieRatio = i / (TOTAL_TIES - 1);
+    var isPassed = tieRatio <= prog;
+    
+    // Check of deze specifieke biels een mijlpaal-biels is
+    var msIdx = msIndices.indexOf(i);
+    var isMilestone = msIdx !== -1;
+
+    var tieClass = "tl-tie ";
+    if(isMilestone) {
+      var mDate = ms[msIdx].date;
+      var isDone = now > mDate;
+      var isCur = msIdx === ms.reduce(function(c,x,j){return now>=x.date?j:c;},-1);
+      tieClass += isCur ? "milestone-cur" : (isDone ? "milestone-done" : "milestone-future");
+    } else {
+      tieClass += isPassed ? "done" : "future";
+    }
+
+    tiesHtml += '<div class="'+tieClass+'" style="left:'+pct+'%"></div>';
+  }
+
+  tiesContainer.innerHTML = tiesHtml;
+
+  // 3. Plaats de tekstlabels exact onder de gekozen mijlpaal-biels
+  var mh = "";
+  ms.forEach(function(m, i){
+    var closestTieIdx = msIndices[i];
+    var pct = (closestTieIdx / (TOTAL_TIES - 1)) * 100; // Lijn exact uit met de witte biels!
+    var isDone = now > m.date;
+    var isCur = i === ms.reduce(function(c,x,j){return now>=x.date?j:c;},-1);
+    var st = isCur ? "cur" : (isDone ? "done" : "future");
+
+    mh += '<div class="tl-ms" style="left:'+pct+'%">' +
+            '<div class="tl-ms-date '+st+'" data-en="'+m.en+'" data-pt="'+m.pt+'">'+m.en+'</div>' +
+            '<div class="tl-ms-label '+st+'" data-en="'+m.ten+'" data-pt="'+m.tpt+'">'+m.ten+'</div>' +
+          '</div>';
+  });
+
+  milestonesContainer.innerHTML = mh;
 })();
 
 var dkeys=["structures","powertrain","dynamics","electronics","marketing"];

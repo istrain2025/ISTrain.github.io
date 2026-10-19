@@ -68,25 +68,166 @@ nav.sc{background:rgba(6,9,15,.95);backdrop-filter:blur(24px);border-bottom:1px 
 .sti{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.04);transition:background .3s;}.sti:hover{background:rgba(60,133,197,.04);}.sti:last-child{border-right:none;}
 .stn{font-family:"Bebas Neue",sans-serif;font-size:3.4rem;color:var(--bl);line-height:1;display:block;}
 .stl{font-family:"Space Mono",monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-top:.28rem;display:block;}
-/* TIMELINE */
-.tl-wrap{background:var(--dark2);padding:2.5rem 5rem;border-bottom:1px solid rgba(60,133,197,.12);}
-.tl-header{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bl);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;}
-.tl-header::before{content:"";width:16px;height:1px;background:var(--bl);}
-.tl-bar{position:relative;height:4px;background:rgba(255,255,255,.08);border-radius:2px;}
-.tl-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#1e4a72,var(--blue),var(--bl));width:0%;transition:width 1.4s cubic-bezier(.16,1,.3,1);}
-.tl-glow{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--bl);box-shadow:0 0 14px 5px rgba(91,163,224,.65);left:0%;transition:left 1.4s cubic-bezier(.16,1,.3,1);}
-.tl-dots{position:relative;height:0;}
-.tl-dot{position:absolute;top:-6px;width:12px;height:12px;border-radius:50%;border:2px solid;transform:translateX(-50%);}
-.tl-dot.done{background:var(--bl);border-color:var(--bl);}
-.tl-dot.cur{background:var(--bl);border-color:#fff;box-shadow:0 0 10px rgba(91,163,224,.8);animation:tdp 1.8s ease-in-out infinite;}
-.tl-dot.future{background:transparent;border-color:rgba(255,255,255,.15);}
-@keyframes tdp{0%,100%{box-shadow:0 0 6px rgba(91,163,224,.5);}50%{box-shadow:0 0 18px rgba(91,163,224,.9);}}
-.tl-milestones{position:relative;height:84px;margin-top:10px;}
-.tl-ms{position:absolute;transform:translateX(-50%);text-align:center;width:110px;}
-.tl-ms-date{font-family:"Space Mono",monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;}
-.tl-ms-date.done{color:rgba(91,163,224,.8);}.tl-ms-date.cur{color:var(--bl);font-weight:700;}.tl-ms-date.future{color:rgba(255,255,255,.3);}
-.tl-ms-label{font-size:.85rem;line-height:1.35;font-weight:400;}
-.tl-ms-label.done{color:rgba(255,255,255,.5);}.tl-ms-label.cur{color:var(--white);}.tl-ms-label.future{color:rgba(255,255,255,.22);}
+/* TIMELINE (100% Percentage-gebaseerde elementen voor perfecte uitlijning) */
+.tl-wrap {
+  background: var(--dark2);
+  padding: 3rem 5rem;
+  border-bottom: 1px solid rgba(60, 133, 197, 0.12);
+}
+
+.tl-header {
+  font-family: "Space Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bl);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tl-header::before {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--bl);
+}
+
+.tl-bar {
+  position: relative;
+  height: 28px;
+  background: transparent;
+  border-radius: 4px;
+}
+
+/* Stalen spoorstaven (LIGGEN ALTIJD BOVENOP) */
+.tl-bar::before,
+.tl-bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to bottom, #dbe4ee 0%, #8ca0b3 50%, #4a5a6a 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.tl-bar::before { top: 4px; }
+.tl-bar::after { bottom: 4px; }
+
+.tl-ties {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tl-tie {
+  position: absolute;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+/* Standaard niet-bereikte biels */
+.tl-tie.future {
+  background: #1d2430;
+}
+
+/* Standaard bereikte blauwe biels */
+.tl-tie.done {
+  background: var(--bl);
+}
+
+/* Witte mijlpaal-biels */
+.tl-tie.milestone-future {
+  background: rgba(255, 255, 255, 0.3);
+  width: 6px;
+  z-index: 4;
+}
+
+.tl-tie.milestone-done,
+.tl-tie.milestone-cur {
+  background: #ffffff;
+  width: 6px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+  z-index: 5;
+}
+
+/* Knipperende actieve gloed */
+.tl-glow {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: transparent;
+  left: 0%;
+  transition: left 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+  animation: tlBlink 1.2s ease-in-out infinite;
+  z-index: 8;
+}
+
+@keyframes tlBlink {
+  0%, 100% {
+    box-shadow: 0 0 6px 2px rgba(91, 163, 224, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 18px 6px rgba(255, 255, 255, 0.9), 0 0 28px 10px var(--bl);
+  }
+}
+
+.tl-milestones {
+  position: relative;
+  height: 84px;
+  margin-top: 26px;
+  z-index: 6;
+}
+
+.tl-ms {
+  position: absolute;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 120px;
+}
+
+.tl-ms-date {
+  font-family: "Space Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.tl-ms-date.done,
+.tl-ms-label.done,
+.tl-ms-date.cur,
+.tl-ms-label.cur {
+  color: #ffffff !important;
+  opacity: 1;
+  font-weight: 600;
+}
+
+.tl-ms-date.future {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.tl-ms-label {
+  font-size: 0.85rem;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.tl-ms-label.future {
+  color: rgba(255, 255, 255, 0.22);
+}
 /* CARDS */
 .card{background:var(--dark2);border:1px solid rgba(255,255,255,.05);padding:2rem;transition:border-color .35s,transform .35s;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;display:block;color:inherit;border-radius:var(--r);}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--bl);transform:scaleY(0);transition:transform .4s;transform-origin:bottom;border-radius:2px 0 0 2px;}
