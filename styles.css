@@ -665,3 +665,96 @@ a:has(img[src*="siemens" i]) img {
 .modal-overlay.show {
   display: flex;
 }
+/* ==========================================
+   SPONSOR TICKER BANNER (Puur Witte Achtergrond)
+   ========================================== */
+
+.sponsor-ticker-wrap {
+  width: 95%;                  /* Zwevend kaarteffect */
+  max-width: 1400px;
+  margin: 1.5rem auto;         
+  overflow: hidden;
+  
+  /* Volledig puur wit zonder grijstint of transparantie */
+  background: #ffffff !important; 
+  
+  padding: 1.25rem 0;
+  border-radius: 16px;         /* Zachte afgeronde hoeken */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); /* Strakke schaduw op de donkere site */
+  
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Zachte fade-out aan de zijkanten (ook in 100% puur wit) */
+.sponsor-ticker-wrap::before,
+.sponsor-ticker-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sponsor-ticker-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.sponsor-ticker-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.sponsor-ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 3.5rem; 
+  animation: sponsorScroll 45s linear infinite;
+}
+
+/* Pauzeer de beweging bij hover */
+.sponsor-ticker-wrap:hover .sponsor-ticker-track {
+  animation-play-state: paused;
+}
+
+/* Elk logo krijgt een exact even groot vakje */
+.sponsor-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px; 
+  height: 50px;  
+}
+
+/* Logo's schalen perfect binnen hun eigen vakje */
+.sponsor-item img {
+  max-height: 50px; 
+  max-width: 130px; 
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  /* Eventuele schaduwen achter de logo's verwijderd voor een strakke witte integratie */
+  filter: none !important;
+}
+
+.sponsor-item img:hover {
+  transform: scale(1.1);
+}
+
+/* KEYFRAMES VOOR DE ONEINDIGE LUS */
+@keyframes sponsorScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
