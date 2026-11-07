@@ -394,12 +394,108 @@ a.sp-item.idmec-logo:hover {
 .mli:hover{background:var(--blue);border-color:var(--blue);}
 .mli svg{width:14px;height:14px;fill:rgba(91,163,224,.65);}.mli:hover svg{fill:#fff;}
 /* NEWS */
-.nc{border:1px solid rgba(255,255,255,.05);overflow:hidden;transition:border-color .3s,transform .3s;background:var(--dark2);border-radius:var(--r);}.nc:hover{border-color:rgba(60,133,197,.18);transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.3);}
-.ni{height:220px;overflow:hidden;}.ni img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}.nc:hover .ni img{transform:scale(1.05);}
-.nb{padding:1.8rem;}.nd{font-family:"Space Mono",monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bl);margin-bottom:.5rem;}
-.nt{font-family:"Bebas Neue",sans-serif;font-size:1.72rem;line-height:1.05;margin-bottom:.55rem;}
-.ne{font-size:1rem;color:var(--grey);line-height:1.7;text-align:justify;}
-.nlink{display:inline-flex;align-items:center;gap:.4rem;margin-top:.75rem;font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bl);text-decoration:none;transition:gap .3s;}.nlink:hover{gap:.8rem;}
+/* Vast en strak MVV-patroon grid (3 kolommen) */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense; /* DIT LOST DE GATEN OP */
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 900px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Standaard Vierkant Blok (1 kolom breed) */
+.nc {
+  position: relative;
+  border: 1px solid rgba(255,255,255,.05);
+  overflow: hidden;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+  background: var(--dark2, #111);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 320px; /* Vaste vierkante/strakke hoogte */
+  text-decoration: none;
+}
+
+/* Rechthoek / Breed Blok (neemt 2 kolommen in beslag) */
+.nc.wide {
+  grid-column: span 2;
+}
+
+.nc:hover {
+  border-color: rgba(60,133,197,.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,.5);
+}
+
+.ni {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.ni img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.nc:hover .ni img {
+  transform: scale(1.06);
+}
+
+.nc::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
+  z-index: 2;
+}
+
+.nb {
+  position: relative;
+  z-index: 3;
+  padding: 1.5rem;
+}
+
+.nd {
+  font-family: "Space Mono", monospace;
+  font-size: .64rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--bl);
+  margin-bottom: .4rem;
+}
+
+.nt {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.nlink {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-family: "Space Mono", monospace;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--bl);
+}
 /* UPDATES */
 .upd-dept-block{margin-bottom:1.8rem;background:var(--dark2);border:1px solid rgba(255,255,255,.06);overflow:hidden;border-radius:var(--r);}
 .upd-dept-header{display:flex;align-items:center;gap:.9rem;padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(60,133,197,.03);}

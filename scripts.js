@@ -38,6 +38,13 @@ function applyLang(){
   document.querySelectorAll("[data-placeholder-en],[data-placeholder-pt]").forEach(function(el){var val=lang==="pt"?el.dataset.placeholderPt:el.dataset.placeholderEn;if(val)el.placeholder=val;});
   var fi=(lang==="en"?' PT':' EN');
   ["lang-btn","mob-lang-btn","foot-lang-btn"].forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML=fi;});
+  
+  // Filter de nieuwskaarten automatisch op de gekozen taal (en / pt)
+  document.querySelectorAll(".nc[data-lang]").forEach(function(card){
+    var cardLang = card.getAttribute("data-lang");
+    card.style.display = (cardLang === lang) ? "flex" : "none";
+  });
+
   buildGrids();
 }
 function toggleLang(){lang=lang==="en"?"pt":"en";applyLang();}
@@ -193,5 +200,5 @@ var hv=document.getElementById("hvid");if(hv){hv.muted=true;var _p=function(){hv
 
 buildGrids();applyLang();
 document.addEventListener("DOMContentLoaded", function () {
-  
+  applyLang();
 });
