@@ -854,3 +854,608 @@ a:has(img[src*="siemens" i]) img {
     transform: translateX(-50%);
   }
 }
+/* ========================================== */
+/* DEPARTMENTS CARROUSEL (SLIDER + PIJLTJES)  */
+/* ========================================== */
+
+.dept-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* De schuivende lijst van kaarten */
+.dept-slider {
+  display: flex;
+  gap: 1.8rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Verberg scrollbar voor Firefox */
+  padding: 1rem 0.2rem;
+}
+
+.dept-slider::-webkit-scrollbar {
+  display: none; /* Verberg scrollbar voor Chrome/Safari */
+}
+
+/* Elke kaart krijgt een vaste breedte zodat er precies 3 naast elkaar passen */
+/* De afdelingskaart */
+.dept-card {
+  flex: 0 0 calc(33.333% - 1.2rem);
+  min-width: 300px;
+  position: relative;
+  height: 340px;
+  border-radius: var(--r, 12px);
+  overflow: hidden;
+  border: 1px solid rgba(60, 133, 197, 0.3);
+  background: var(--dark2, #111);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Zorg dat de afbeelding altijd goed de kaart vult */
+.dept-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1; /* Achter de overlay en tekst */
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.dept-card:hover .dept-img {
+  transform: scale(1.08);
+  filter: brightness(0.6);
+}
+
+/* Subtiele donkere gradient overlay zodat de tekst altijd leesbaar is */
+.dept-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,12,16,0.95) 0%, rgba(10,12,16,0.5) 50%, rgba(10,12,16,0.3) 100%);
+  z-index: 2; /* Boven de foto, onder de tekst */
+  transition: background 0.4s ease;
+}
+
+.dept-card:hover .dept-overlay {
+  background: linear-gradient(to top, rgba(10,12,16,0.98) 0%, rgba(10,12,16,0.8) 60%, rgba(10,12,16,0.5) 100%);
+}
+
+/* Zorg dat de tekstcontainer erbovenop staat */
+.dept-content {
+  position: absolute;
+  inset: 0;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 3;
+  text-align: left;
+}
+
+/* De hoofdtitel van de afdeling (groot en strak in Bebas Neue) */
+.dept-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem;
+  line-height: 0.95;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+/* De beschrijving die omhoog komt bij hover */
+.dept-desc {
+  font-size: 0.88rem;
+  color: var(--off, #ccc);
+  line-height: 1.45;
+  font-weight: 300;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+.dept-card:hover .dept-desc {
+  max-height: 140px;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+
+/* Navigatiepijltjes knoppen */
+.dept-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--dark2, #111);
+  border: 1px solid rgba(60, 133, 197, 0.4);
+  color: var(--white, #fff);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.dept-nav-btn:hover {
+  background: var(--bl, #3c85c5);
+  border-color: var(--bl, #3c85c5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.dept-prev {
+  left: -25px;
+}
+
+.dept-next {
+  right: -25px;
+}
+
+/* Media query voor kleinere schermen (mobiel / tablet) */
+@media (max-width: 900px) {
+  .dept-card {
+    flex: 0 0 calc(50% - 1rem);
+  }
+  .dept-prev { left: -10px; }
+  .dept-next { right: -10px; }
+}
+
+@media (max-width: 600px) {
+  .dept-card {
+    flex: 0 0 100%;
+  }
+}
+/* ========================================== */
+/* 1. DEPARTMENT CARDS (CARROUSEL & FST STYLE) */
+/* ========================================== */
+
+.dept-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dept-slider {
+  display: flex;
+  gap: 1.8rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 1rem 0.2rem;
+}
+
+.dept-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.dept-card {
+  flex: 0 0 calc(33.333% - 1.2rem);
+  min-width: 300px;
+  position: relative;
+  height: 340px;
+  border-radius: var(--r, 12px);
+  overflow: hidden;
+  border: 1px solid rgba(60, 133, 197, 0.3);
+  background: var(--dark2, #111);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.dept-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--bl, #3c85c5);
+  box-shadow: 0 15px 35px rgba(60, 133, 197, 0.25);
+}
+
+.dept-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.dept-card:hover .dept-img {
+  transform: scale(1.08);
+  filter: brightness(0.6);
+}
+
+.dept-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,12,16,0.95) 0%, rgba(10,12,16,0.5) 50%, rgba(10,12,16,0.3) 100%);
+  z-index: 2;
+  transition: background 0.4s ease;
+}
+
+.dept-card:hover .dept-overlay {
+  background: linear-gradient(to top, rgba(10,12,16,0.98) 0%, rgba(10,12,16,0.8) 60%, rgba(10,12,16,0.5) 100%);
+}
+
+.dept-content {
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 3;
+  text-align: left;
+}
+
+.dept-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem;
+  line-height: 0.95;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.dept-desc {
+  font-size: 0.88rem;
+  color: var(--off, #ccc);
+  line-height: 1.45;
+  font-weight: 300;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+.dept-card:hover .dept-desc {
+  max-height: 140px;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+
+/* Navigatieknoppen carrousel */
+.dept-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--dark2, #111);
+  border: 1px solid rgba(60, 133, 197, 0.4);
+  color: var(--white, #fff);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.dept-nav-btn:hover {
+  background: var(--bl, #3c85c5);
+  border-color: var(--bl, #3c85c5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.dept-prev { left: -25px; }
+.dept-next { right: -25px; }
+
+/* ========================================== */
+/* 2. SPOOR & ANDORINHA LOCORMOTIEF ANIMATIE  */
+/* ========================================== */
+
+.rail-track-line {
+  position: relative;
+  height: 3px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.2) 0px,
+    rgba(255, 255, 255, 0.2) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  margin-top: 0.8rem;
+  overflow: visible;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rail-track-line::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: -50px;
+  width: 46px;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 54 18' fill='%233c85c5'%3E%3Cpath d='M8 12h38v2H8z' fill='%23444'/%3E%3Cpath d='M44 3c-2 0-6 1-10 2L6 5C2.5 5 0 7 0 10h48c2 0 6-3 6-5s-4-2-10-2z' fill='%230f1b29'/%3E%3Cpath d='M0 10h48v2H0z' fill='%233c85c5'/%3E%3Cpath d='M35 5h7c1 0 2 .5 2 1.5S43 8 42 8h-7V5z' fill='%23fff' opacity='0.8'/%3E%3Ccircle cx='12' cy='13' r='2' fill='%23111' stroke='%23fff' stroke-width='0.5'/%3E%3Ccircle cx='38' cy='13' r='2' fill='%23111' stroke='%23fff' stroke-width='0.5'/%3E%3C/svg%3E") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  filter: drop-shadow(4px 0px 4px rgba(60, 133, 197, 0.9));
+}
+
+.rail-track-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--bl, #3c85c5);
+  box-shadow: 0 0 10px var(--bl, #3c85c5);
+}
+
+.dept-card:hover .rail-track-line::before {
+  opacity: 1;
+  animation: driveAndorinha 3.2s linear forwards;
+}
+
+.dept-card:hover .rail-track-line::after {
+  animation: fillAndorinhaTrack 3.2s linear forwards;
+}
+
+@keyframes driveAndorinha {
+  0% { left: -50px; }
+  100% { left: calc(100% - 40px); }
+}
+
+@keyframes fillAndorinhaTrack {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* ========================================== */
+/* FST STYLE PORTRETTEN (RUIMER & VERTICAAL)  */
+/* ========================================== */
+
+.dept-section {
+  margin-bottom: 4rem;
+}
+
+.dept-header-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--white, #fff);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dept-header-title::before {
+  content: '\\';
+  color: var(--bl, #3c85c5);
+  font-weight: bold;
+}
+
+/* Grotere gridkaarten (min 170px breed in plaats van 140px) */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 2rem 1.4rem;
+}
+
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Verticaal portretformaat (3:4) zodat geen enkel hoofd/schouder wordt afgesneden */
+.member-photo-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #0d1117;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: block;
+}
+
+.member-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center; /* Zorgt dat de focus altijd netjes op het gezicht ligt */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.member-card:hover .member-photo-wrap img {
+  transform: scale(1.04);
+}
+
+.member-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.member-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  color: var(--white, #fff);
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+}
+
+.member-linkedin-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey, #888);
+  transition: color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.member-linkedin-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.member-linkedin-icon:hover {
+  color: var(--bl, #3c85c5);
+  transform: translateY(-1px);
+}
+
+.member-role {
+  font-size: 0.82rem;
+  color: var(--grey, #888);
+  font-weight: 300;
+  line-height: 1.3;
+  margin-top: 0.1rem;
+}
+/* ========================================== */
+/* FANCY INTERNATIONAL AWARDS BANNER          */
+/* ========================================== */
+
+.fancy-awards-container {
+  position: relative;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(10, 15, 26, 0.98) 100%);
+  border: 1px solid rgba(60, 133, 197, 0.35);
+  border-radius: 12px;
+  padding: 3rem;
+  margin-top: 3rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Subtiele glow-cirkel op de achtergrond */
+.fancy-awards-container::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(60, 133, 197, 0.25) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fancy-awards-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Trophy / Counter Box */
+.fancy-awards-badge-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.fancy-awards-container:hover .fancy-awards-badge-box {
+  border-color: rgba(60, 133, 197, 0.6);
+  transform: translateY(-2px);
+}
+
+.fancy-trophy-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.5rem;
+  fill: #e5c158; /* Gouden accent voor de trofee */
+  filter: drop-shadow(0 0 8px rgba(229, 193, 88, 0.4));
+}
+
+.fancy-awards-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.8rem;
+  color: #fff;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  background: linear-gradient(180deg, #ffffff 30%, var(--bl, #3c85c5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fancy-awards-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--off, #ccc);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 0.6rem;
+}
+
+/* Rechter inhoud */
+.fancy-awards-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.fancy-awards-content p {
+  color: var(--off, #ccc);
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Award Pills / Tags onder de tekst */
+.fancy-awards-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.award-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(60, 133, 197, 0.1);
+  border: 1px solid rgba(60, 133, 197, 0.3);
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+}
+
+.award-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bl, #3c85c5);
+  box-shadow: 0 0 6px var(--bl, #3c85c5);
+}
+
+@media(max-width: 850px) {
+  .fancy-awards-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .fancy-awards-container {
+    padding: 2rem;
+  }
+}

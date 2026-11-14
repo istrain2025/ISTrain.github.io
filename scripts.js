@@ -1,204 +1,393 @@
+var lang = "en";
 
-var lang="en";
-var PT_FLAG="";var UK_FLAG="";
-var STIJN_PH="";
-var MEMBERS_LI={};
-var MEMBERS_BIO={};
-
-// 1. REGISTRY FOR EMAIL ADDRESSES Linked to target members
-var MEMBERS_EMAIL={
-  "Diego Araujo": "diego.araujo@tecnico.ulisboa.pt",
-  "Manuel Barreiras": "manuel.barreiras@tecnico.ulisboa.pt",
-  "Daniel Ferreira": "daniel.resina.ferreira@tecnico.ulisboa.pt",
-  "Tomas Serafim": "tomas.serafim@tecnico.ulisboa.pt",
-  "Vasco Carvalho": "vasco.daniel.carvalho@tecnico.ulisboa.pt",
-  "Ana Francisca Rosado": "anafranciscarosado@tecnico.ulisboa.pt"
+// 1. FOTO PADEN HUIDIGE LEDEN
+var MEMBERS_PHOTOS = {
+  // Board / Directie
+  "Manuel Barreiras": "About us/Board/Manuel Barreiras.png",
+  "Daniel Ferreira": "About us/Board/Daniel Ferreira.png",
+  "Diego Araújo": "About us/Board/Diego Araújo.png",
+  // Electronics & Software
+  "Catarina Santos": "About us/Electronics & Software/Catarina Santos.png",
+  "Inês Gonçalves": "About us/Electronics & Software/Inês Gonçalves.png",
+  "Mateus Pinto": "About us/Electronics & Software/Mateus.png",
+  "Sara Viegas": "About us/Electronics & Software/Sara Viegas.png",
+  "Sofia Dias": "About us/Electronics & Software/Sofia.png",
+  // Marketing & Operations
+  "Martim Caetano": "About us/Marketing, Operations & Logistics/Martim Alves Caetano.png",
+  "Miguel Bom": "About us/Marketing, Operations & Logistics/Miguel Bom.png",
+  "Leonor Mira": "About us/Marketing, Operations & Logistics/Mira Leonor.png",
+  "Rodrigo Oliveira": "About us/Marketing, Operations & Logistics/Rodrigo Oliveira.png",
+  "Stijn Meij": "About us/Marketing, Operations & Logistics/Stijn Meij.png",
+  "Teresa de Brito": "About us/Marketing, Operations & Logistics/Teresa de Brito.png",
+  // Powertrain & Energy Systems
+  "Francisco Teixeira": "About us/Powertrain & Energy Systems/Francisco Teixeira.png",
+  "Miguel Martins": "About us/Powertrain & Energy Systems/Miguel Martins.png",
+  // Structures & Aerodynamics
+  "Lourenço Próspero": "About us/Structures & Aerodynamics/Lourenço Próspero.png",
+  "Daniel Pereira": "About us/Structures & Aerodynamics/Daniel.png",
+  "Guilherme Marques": "About us/Structures & Aerodynamics/Guilherme Marques.png",
+  "Gustavo Sardinha": "About us/Structures & Aerodynamics/Gustavo Sardinha.png",
+  "Joana Pedro": "About us/Structures & Aerodynamics/Joana.png",
+  "Miguel Gouveia": "About us/Structures & Aerodynamics/Miguel Gouveia.png",
+  // Vehicle Dynamics
+  "Lourenço Vieira": "About us/Vehicle Dynamics/Lourenço Vieira.png",
+  "Duarte Soares": "About us/Vehicle Dynamics/Duarte Soares.png",
+  "João Basílio": "About us/Vehicle Dynamics/João Basílio.png",
+  "Rita Brígido": "About us/Vehicle Dynamics/Rita Brígido.png",
+  "Gonçalo Tome": "About us/Vehicle Dynamics/Tome.png"
 };
 
-var DEPT_PHOTOS={structures:"About us/Structures & Aerodynamics/Structures & Aerodynamics.jpg",powertrain:"About us/Powertrain & Energy Systems/Powertrain & Energy Systems.jpg",dynamics:"About us/Vehicle Dynamics/Vehicle Dynamics.jpg",electronics:"About us/Electronics & Software/Electronics & Software.jpg",marketing:"About us/Marketing, Operations & Logistics/Marketing, Operations & Logistics.jpg"};
-var MEMBERS_PHOTOS={"Diego Araujo":"About us/Structures & Aerodynamics/Diego Araújo.png","Diogo Nunes":"About us/Structures & Aerodynamics/Diogo Nunes.png","Francisco Afonso":"About us/Structures & Aerodynamics/Francisco Afonso.png","Pedro Afonso":"About us/Structures & Aerodynamics/Pedro Afonso.png","Guilherme Marques":"About us/Structures & Aerodynamics/Guilherme Marques.png","Gustavo Sardinha":"About us/Structures & Aerodynamics/Gustavo Sardinha.png","Lourenco Prospero":"About us/Structures & Aerodynamics/Lourenço Próspero.png","Miguel Gouveia":"About us/Structures & Aerodynamics/Miguel Gouveia.png","Miguel Pimentel":"About us/Structures & Aerodynamics/Miguel Pimentel.png","Manuel Barreiras":"About us/Powertrain & Energy Systems/Manuel Barreiras.png","Miguel Meninas": "About us/Powertrain & Energy Systems/Miguel Meninas.png","Francisco Teixeira":"About us/Powertrain & Energy Systems/Francisco Teixeira.png","Miguel Martins":"About us/Powertrain & Energy Systems/Miguel Martins.png","Daniel Ferreira":"About us/Vehicle Dynamics/Daniel Ferreira.png","Rafael Coimbra":"About us/Vehicle Dynamics/Rafael Coimbra.png","Duarte Soares":"About us/Vehicle Dynamics/Duarte Soares.png","Joao Basilio":"About us/Vehicle Dynamics/João Basílio.png","Lourenco Vieira":"About us/Vehicle Dynamics/Lourenço Vieira.png","Rita Brigido":"About us/Vehicle Dynamics/Rita Brígido.png","Tomas Serafim":"About us/Electronics & Software/Tomás Serafim.png","Joao Sousa":"About us/Electronics & Software/João Sousa.png","Catarina Santos":"About us/Electronics & Software/Catarina Santos.png","Vasco Carvalho":"About us/Marketing, Operations & Logistics/Vasco Carvalho.png","Ana Francisca Rosado":"About us/Marketing, Operations & Logistics/Ana Francisca Rosado.png","Aliya Ibrahimo":"About us/Marketing, Operations & Logistics/Aliya Ibrahmo.png","Pedro Clemente":"About us/Marketing, Operations & Logistics/Pedro Clemente.png","Rodrigo Oliveira":"About us/Marketing, Operations & Logistics/Rodrigo Oliveira.png","Stijn Meij":"About us/Marketing, Operations & Logistics/Stijn Meij.png","Martim Alves Caetano":"About us/Marketing, Operations & Logistics/Martim Alves Caetano.png","Teresa de Brito":"About us/Marketing, Operations & Logistics/Teresa de Brito.png"};
-var DEPTS={
-  structures:{name:{en:"Structures & Aerodynamics",pt:"Estruturas e Aerodinâmica"},col:"#5ba3e0",desc:{en:"Chassis, bodyshell, structural analysis and aerodynamic optimisation.",pt:"Chassis, carroçaria, análise estrutural e otimização aerodinâmica."},members:[{n:"Diego Araujo",r:{en:"Department Leader",pt:"Líder de Departamento"}},{n:"Diogo Nunes",r:{en:"Member",pt:"Membro"}},{n:"Francisco Afonso",r:{en:"Member",pt:"Membro"}},{n:"Pedro Afonso",r:{en:"Member",pt:"Membro"}},{n:"Guilherme Marques",r:{en:"Member",pt:"Membro"}},{n:"Gustavo Sardinha",r:{en:"Member",pt:"Membro"}},{n:"Lourenco Prospero",r:{en:"Member",pt:"Membro"}},{n:"Miguel Gouveia",r:{en:"Member",pt:"Membro"}},{n:"Miguel Pimentel",r:{en:"Member",pt:"Membro"}}]},
-  powertrain: {
-  name: { en: "Powertrain & Energy Systems", pt: "Propulsão e Sistemas de Energia" },
-  col: "#c9a84c",
-  desc: { en: "Electric drivetrain, motor selection, energy storage and traction performance.", pt: "Tração elétrica, seleção de motores, armazenamento de energia e desempenho de tração." },
-  members: [
-    { n: "Manuel Barreiras", r: { en: "Department Leader", pt: "Líder de Departamento" } },
-    { n: "Francisco Teixeira", r: { en: "Member", pt: "Membro" } },
-    { n: "Miguel Martins", r: { en: "Member", pt: "Membro" } }
-  ]
-},
-  dynamics:{name:{en:"Vehicle Dynamics",pt:"Dinâmica do Veículo"},col:"#7ecba1",desc:{en:"Bogies, suspension, braking systems and ride comfort analysis.",pt:"Bogies, suspensão, sistemas de travagem e análise de conforto."},members:[{n:"Daniel Ferreira",r:{en:"Department Leader",pt:"Líder de Departamento"}},{n:"Rafael Coimbra",r:{en:"Member",pt:"Membro"}},{n:"Duarte Soares",r:{en:"Member",pt:"Membro"}},{n:"Joao Basilio",r:{en:"Member",pt:"Membro"}},{n:"Lourenco Vieira",r:{en:"Member",pt:"Membro"}},{n:"Rita Brigido",r:{en:"Member",pt:"Membro"}},{n:"Teresa de Brito",r:{en:"Member",pt:"Membro"}}]},
-  electronics:{name:{en:"Electronics & Software",pt:"Eletrónica e Software"},col:"#e07a5f",desc:{en:"Battery management, motor controllers, firmware, telemetry and control systems.",pt:"Gestão de baterias, controladores de motores, firmware, telemetria e sistemas de controlo."},members:[{n:"Tomas Serafim",r:{en:"Department Leader",pt:"Líder de Departamento"}},{n:"Martim Alves Caetano",r:{en:"Member",pt:"Membro"}},{n:"Joao Sousa",r:{en:"Member",pt:"Membro"}},{n:"Catarina Santos",r:{en:"Member",pt:"Membro"}}]},
-  marketing:{name:{en:"Marketing, Operations & Logistics",pt:"Marketing, Operações e Logística"},col:"#b48ead",desc:{en:"Communications, sponsorship, brand identity, events and team logistics.",pt:"Comunicações, patrocínios, identidade de marca, eventos e logística da equipa."},members:[{n:"Vasco Carvalho",r:{en:"Operations & Logistics Leader",pt:"Líder de Operações e Logística"}},{n:"Ana Francisca Rosado",r:{en:"Marketing Leader",pt:"Líder de Marketing"}},{n:"Aliya Ibrahimo",r:{en:"Member",pt:"Membro"}},{n:"Pedro Clemente",r:{en:"Member",pt:"Membro"}},{n:"Rodrigo Oliveira",r:{en:"Member",pt:"Membro"}},{n:"Stijn Meij",r:{en:"Member",pt:"Membro"}}]}
+// 2. LINKEDIN REGISTRY (Namen exact gelijk getrokken aan ALL_DEPARTMENTS)
+var MEMBERS_LINKEDIN = {
+  "Daniel Ferreira": "https://www.linkedin.com/in/daniel-ferreira-386036278/",
+  "Diego Araújo": "https://www.linkedin.com/in/diego-arsenio-araujo/",
+  "Manuel Barreiras": "https://www.linkedin.com/in/manuel-barreiras-5aa17423b/",
+  "Catarina Santos": "https://www.linkedin.com/in/catarina-santos-a26b923a4/",
+  "Inês Gonçalves": "https://www.linkedin.com/in/in%C3%AAs-gon%C3%A7alves-39684b427/",
+  "Sara Viegas": "https://www.linkedin.com/in/sara-viegas-ab2736322/",
+  "Martim Caetano": "https://www.linkedin.com/in/martim-alves-caetano/",
+  "Miguel Bom": "https://www.linkedin.com/in/miguelbom/",
+  "Leonor Mira": "https://www.linkedin.com/in/leonor-mira-411336406/",
+  "Stijn Meij": "https://www.linkedin.com/in/stijn-meij-0935041b8/",
+  "Teresa de Brito": "https://www.linkedin.com/in/teresa-de-brito-0b8a67398/",
+  "Francisco Teixeira": "https://www.linkedin.com/in/francisco-teixeira-7763a1327/",
+  "Miguel Martins": "https://www.linkedin.com/in/miguel-fontes-martins-961ab82a0/",
+  "Guilherme Marques": "https://www.linkedin.com/in/guilherme-marques-1a600a343/",
+  "Gustavo Sardinha": "https://www.linkedin.com/in/gustavo-sardinha-850946412/",
+  "Lourenço Próspero": "https://www.linkedin.com/in/louren%C3%A7o-pr%C3%B3spero-25b925266/",
+  "Miguel Gouveia": "https://www.linkedin.com/in/miguel-gouveia-aa8a773b2/",
+  "Duarte Soares": "https://www.linkedin.com/in/duarte-soares-239a1a268/",
+  "João Basílio": "https://www.linkedin.com/in/jo%C3%A3obas%C3%ADlio2424/",
+  "Lourenço Vieira": "https://www.linkedin.com/in/lourenco-vieira-65578a224/"
 };
-function applyLang(){
-  document.querySelectorAll("[data-en],[data-pt]").forEach(function(el){var val=lang==="pt"?el.dataset.pt:el.dataset.en;if(val!==undefined)el.innerHTML=val;});
-  document.querySelectorAll("[data-placeholder-en],[data-placeholder-pt]").forEach(function(el){var val=lang==="pt"?el.dataset.placeholderPt:el.dataset.placeholderEn;if(val)el.placeholder=val;});
-  var fi=(lang==="en"?' PT':' EN');
-  ["lang-btn","mob-lang-btn","foot-lang-btn"].forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML=fi;});
-  
-  // Filter de nieuwskaarten automatisch op de gekozen taal (en / pt)
-  document.querySelectorAll(".nc[data-lang]").forEach(function(card){
+
+// 3. COMPLETE TEAM & AFDELINGEN DATABASE (EN + PT)
+var ALL_DEPARTMENTS = [
+  {
+    name: { en: "Board", pt: "Direcção" },
+    desc: { en: "Executive leadership and strategy of ISTrain.", pt: "Liderança executiva e estratégia do ISTrain." },
+    members: [
+      { name: "Manuel Barreiras", role: { en: "Team Leader", pt: "Líder da Equipa" } },
+      { name: "Daniel Ferreira", role: { en: "Vice President", pt: "Vice-Presidente" } },
+      { name: "Diego Araújo", role: { en: "Technical Director", pt: "Diretor Técnico" } }
+    ]
+  },
+  {
+    name: { en: "Electronics & Software", pt: "Eletrónica e Software" },
+    desc: { en: "Battery management, motor controllers, firmware, telemetry and control systems.", pt: "Gestão de baterias, controladores de motores, firmware, telemetria e sistemas de controlo." },
+    members: [
+      { name: "Catarina Santos", role: { en: "Department Leader", pt: "Líder de Departamento" } },
+      { name: "Inês Gonçalves", role: { en: "Member", pt: "Membro" } },
+      { name: "Mateus Pinto", role: { en: "Member", pt: "Membro" } },
+      { name: "Sara Viegas", role: { en: "Member", pt: "Membro" } },
+      { name: "Sofia Dias", role: { en: "Member", pt: "Membro" } }
+    ]
+  },
+  {
+    name: { en: "Marketing & Operations", pt: "Marketing, Operações e Logística" },
+    desc: { en: "Communications, sponsorship, brand identity, events and team logistics.", pt: "Comunicações, patrocínios, identidade de marca, eventos e logística da equipa." },
+    members: [
+      { name: "Martim Caetano", role: { en: "Department Leader Marketing", pt: "Líder de Marketing" } },
+      { name: "Miguel Bom", role: { en: "Department Leader Operations", pt: "Líder de Operações" } },
+      { name: "Leonor Mira", role: { en: "Member", pt: "Membro" } },
+      { name: "Rodrigo Oliveira", role: { en: "Member", pt: "Membro" } },
+      { name: "Stijn Meij", role: { en: "Member", pt: "Membro" } },
+      { name: "Teresa de Brito", role: { en: "Member", pt: "Membro" } }
+    ]
+  },
+  {
+    name: { en: "Powertrain & Energy Systems", pt: "Propulsão e Sistemas de Energia" },
+    desc: { en: "Electric drivetrain, motor selection, energy storage and traction performance.", pt: "Tração elétrica, seleção de motores, armazenamento de energia e desempenho de tração." },
+    members: [
+      { name: "Francisco Teixeira", role: { en: "Department Leader", pt: "Líder de Departamento" } },
+      { name: "Miguel Martins", role: { en: "Member", pt: "Membro" } }
+    ]
+  },
+  {
+    name: { en: "Structures & Aerodynamics", pt: "Estruturas e Aerodinâmica" },
+    desc: { en: "Chassis, bodyshell, structural analysis and aerodynamic optimisation.", pt: "Chassis, carroçaria, análise estrutural e otimização aerodinâmica." },
+    members: [
+      { name: "Lourenço Próspero", role: { en: "Department Leader", pt: "Líder de Departamento" } },
+      { name: "Daniel Pereira", role: { en: "Member", pt: "Membro" } },
+      { name: "Guilherme Marques", role: { en: "Member", pt: "Membro" } },
+      { name: "Gustavo Sardinha", role: { en: "Member", pt: "Membro" } },
+      { name: "Joana Pedro", role: { en: "Member", pt: "Membro" } },
+      { name: "Miguel Gouveia", role: { en: "Member", pt: "Membro" } }
+    ]
+  },
+  {
+    name: { en: "Vehicle Dynamics", pt: "Dinâmica do Veículo" },
+    desc: { en: "Bogies, suspension, braking systems and ride comfort analysis.", pt: "Bogies, suspensão, sistemas de travagem e análise de conforto." },
+    members: [
+      { name: "Lourenço Vieira", role: { en: "Department Leader", pt: "Líder de Departamento" } },
+      { name: "Duarte Soares", role: { en: "Member", pt: "Membro" } },
+      { name: "João Basílio", role: { en: "Member", pt: "Membro" } },
+      { name: "Rita Brígido", role: { en: "Member", pt: "Membro" } },
+      { name: "Gonçalo Tome", role: { en: "Member", pt: "Membro" } }
+    ]
+  }
+];
+
+// 4. TAALWISSELING (EN / PT)
+function applyLang() {
+  document.querySelectorAll("[data-en],[data-pt]").forEach(function(el) {
+    var val = lang === "pt" ? el.dataset.pt : el.dataset.en;
+    if (val !== undefined) el.innerHTML = val;
+  });
+  document.querySelectorAll("[data-placeholder-en],[data-placeholder-pt]").forEach(function(el) {
+    var val = lang === "pt" ? el.dataset.placeholderPt : el.dataset.placeholderEn;
+    if (val) el.placeholder = val;
+  });
+  var fi = (lang === "en" ? " PT" : " EN");
+  ["lang-btn", "mob-lang-btn", "foot-lang-btn"].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = fi;
+  });
+
+  document.querySelectorAll(".nc[data-lang]").forEach(function(card) {
     var cardLang = card.getAttribute("data-lang");
     card.style.display = (cardLang === lang) ? "flex" : "none";
   });
 
-  buildGrids();
+  renderAllTeamMembers("team-members-container");
 }
-function toggleLang(){lang=lang==="en"?"pt":"en";applyLang();}
-var $c=document.getElementById("cur"),$r=document.getElementById("curR");
-var mx=0,my=0,rx=0,ry=0;
-document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;if($c){$c.style.left=mx+"px";$c.style.top=my+"px";}});
-(function L(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;if($r){$r.style.left=rx+"px";$r.style.top=ry+"px";}requestAnimationFrame(L);})();
-document.querySelectorAll("a,button,.card,.dc,.nc,.mc,.sp-item,.clink,.pf,.cic-card").forEach(function(el){el.addEventListener("mouseenter",function(){if($r)$r.classList.add("big");});el.addEventListener("mouseleave",function(){if($r)$r.classList.remove("big");});});
-document.getElementById("mbb").addEventListener("click",function(){document.getElementById("mobnav").classList.add("open");});
-document.getElementById("cx").addEventListener("click",function(){document.getElementById("mobnav").classList.remove("open");});
-window.addEventListener("scroll",function(){var n=document.getElementById("nav");if(n)n.classList.toggle("sc",scrollY>60);});
 
-(function(){
+function toggleLang() {
+  lang = lang === "en" ? "pt" : "en";
+  applyLang();
+}
+
+// 5. TEAM PORTRETTEN RENDEREN
+function renderAllTeamMembers(containerId) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+
+  var fullHtml = "";
+  var linkedinSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>';
+
+  ALL_DEPARTMENTS.forEach(function(dept) {
+    var deptName = dept.name[lang] || dept.name.en;
+    fullHtml += '<div class="dept-section">';
+    fullHtml += '<h3 class="dept-header-title">' + deptName + '</h3>';
+    fullHtml += '<div class="members-grid">';
+    dept.members.forEach(function(m) {
+      var photo = MEMBERS_PHOTOS[m.name] || "About us/default.png";
+      var linkedin = MEMBERS_LINKEDIN[m.name];
+      var roleText = m.role[lang] || m.role.en;
+      fullHtml += '<div class="member-card">';
+
+      if (linkedin) {
+        fullHtml += '<a href="' + linkedin + '" target="_blank" class="member-photo-wrap"><img src="' + photo + '" alt="' + m.name + '"></a>';
+      } else {
+        fullHtml += '<div class="member-photo-wrap"><img src="' + photo + '" alt="' + m.name + '"></div>';
+      }
+      fullHtml += '<div class="member-header">';
+      fullHtml += '<div class="member-name">' + m.name + '</div>';
+      if (linkedin) {
+        fullHtml += '<a href="' + linkedin + '" target="_blank" class="member-linkedin-icon" title="LinkedIn profile">' + linkedinSvg + '</a>';
+      }
+      fullHtml += '</div>';
+      fullHtml += '<div class="member-role">' + roleText + '</div>';
+      fullHtml += '</div>';
+    });
+    fullHtml += '</div></div>';
+  });
+  container.innerHTML = fullHtml;
+}
+
+// 6. PAGINA ROUTING & ANIMATIES
+function go(page) {
+  var mobnav = document.getElementById("mobnav");
+  if (mobnav) mobnav.classList.remove("open");
+
+  document.querySelectorAll(".page").forEach(function(p) { p.classList.remove("on"); });
+  var el = document.getElementById("page-" + page);
+  if (el) el.classList.add("on");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  document.querySelectorAll(".nlinks a").forEach(function(a) {
+    a.classList.toggle("on", a.dataset.p === page);
+  });
+
+  setTimeout(runRev, 120);
+}
+
+function runRev() {
+  var io = new IntersectionObserver(function(en) {
+    en.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add("v");
+    });
+  }, { threshold: 0.06 });
+
+  document.querySelectorAll(".page.on .rv:not(.v), .page.on .rl:not(.v), .page.on .rr:not(.v)").forEach(function(el) {
+    io.observe(el);
+  });
+}
+
+// 7. TABS, SCORING & CARROUSEL
+function showTeam(id) {
+  document.querySelectorAll(".team-panel").forEach(function(p) { p.classList.remove("on"); });
+  document.querySelectorAll(".team-tab").forEach(function(t) { t.classList.remove("on"); });
+  var p = document.getElementById("panel-" + id);
+  var t = document.getElementById("tab-" + id);
+  if (p) p.classList.add("on");
+  if (t) t.classList.add("on");
+}
+
+function showScoring(id) {
+  document.querySelectorAll(".stab-panel").forEach(function(p) { p.classList.remove("on"); });
+  document.querySelectorAll(".stab-btn").forEach(function(b) { b.classList.remove("on"); });
+  var p = document.getElementById("sp-" + id);
+  var b = document.getElementById("stab-" + id);
+  if (p) p.classList.add("on");
+  if (b) b.classList.add("on");
+}
+
+function showErcScoring(tabId) {
+  showScoring(tabId);
+}
+
+function scrollDepartments(direction) {
+  var activePage = document.querySelector(".page.on");
+  var slider = activePage
+    ? (activePage.querySelector("#deptSlider") || activePage.querySelector(".dept-slider"))
+    : document.getElementById("deptSlider");
+
+  if (!slider) return;
+
+  var card = slider.querySelector(".dept-card") || slider.querySelector(".card") || slider.querySelector(".dc") || slider.firstElementChild;
+  var cardWidth = card ? card.offsetWidth + 30 : 320;
+
+  slider.scrollBy({
+    left: direction * cardWidth,
+    behavior: "smooth"
+  });
+}
+
+// 8. CUSTOM CURSOR, NAVIGATIE & COUNTDOWN
+var $c = document.getElementById("cur"), $r = document.getElementById("curR");
+var mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener("mousemove", function(e) {
+  mx = e.clientX; my = e.clientY;
+  if ($c) { $c.style.left = mx + "px"; $c.style.top = my + "px"; }
+});
+
+(function L() {
+  rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+  if ($r) { $r.style.left = rx + "px"; $r.style.top = ry + "px"; }
+  requestAnimationFrame(L);
+})();
+
+window.addEventListener("scroll", function() {
+  var n = document.getElementById("nav");
+  if (n) n.classList.toggle("sc", scrollY > 60);
+});
+
+function tick() {
+  var d = new Date("2027-06-24T09:00:00"), n = new Date(), diff = d - n;
+  if (diff <= 0) return;
+  var da = Math.floor(diff / 864e5), hr = Math.floor(diff % 864e5 / 36e5), mi = Math.floor(diff % 36e5 / 6e4), se = Math.floor(diff % 6e4 / 1e3);
+  var e = document.getElementById("cdd"); if (e) e.textContent = String(da).padStart(3, "0");
+  e = document.getElementById("cdh"); if (e) e.textContent = String(hr).padStart(2, "0");
+  e = document.getElementById("cdm"); if (e) e.textContent = String(mi).padStart(2, "0");
+  e = document.getElementById("cds"); if (e) e.textContent = String(se).padStart(2, "0");
+}
+setInterval(tick, 1000);
+tick();
+
+// 9. TIJDLIJN (HOME)
+(function() {
   var ms = [
-    {date:new Date("2026-09-01"),en:"Sep 2026",pt:"Set 2026",ten:"Rollout",tpt:"Rollout"},
-    {date:new Date("2026-10-01"),en:"Oct 2026",pt:"Out 2026",ten:"Testing Andorinha",tpt:"Testes Andorinha"},
-    {date:new Date("2026-11-01"),en:"Nov 2026",pt:"Nov 2026",ten:"Web Summit",tpt:"Web Summit"},
-    {date:new Date("2027-05-01"),en:"May 2027",pt:"Mai 2027",ten:"Portugal Railway Summit",tpt:"Portugal Railway Summit"},
-    {date:new Date("2027-06-01"),en:"Jun 2027",pt:"Jun 2027",ten:"European Railway Challenge & IMechE Railway Challenge",tpt:"European Railway Challenge & IMechE Railway Challenge"}
+    { date: new Date("2026-09-01"), en: "Sep 2026", pt: "Set 2026", ten: "Rollout", tpt: "Rollout" },
+    { date: new Date("2026-10-01"), en: "Oct 2026", pt: "Out 2026", ten: "Testing Andorinha", tpt: "Testes Andorinha" },
+    { date: new Date("2026-11-01"), en: "Nov 2026", pt: "Nov 2026", ten: "Web Summit", tpt: "Web Summit" },
+    { date: new Date("2027-05-01"), en: "May 2027", pt: "Mai 2027", ten: "Portugal Railway Summit", tpt: "Portugal Railway Summit" },
+    { date: new Date("2027-06-01"), en: "Jun 2027", pt: "Jun 2027", ten: "European Railway Challenge & IMechE Railway Challenge", tpt: "European Railway Challenge & IMechE Railway Challenge" }
   ];
 
   var startDate = ms[0].date;
-  var endDate = ms[ms.length-1].date;
+  var endDate = ms[ms.length - 1].date;
   var totalSpan = endDate - startDate;
   var now = new Date();
   var prog = Math.max(0, Math.min(1, (now - startDate) / totalSpan));
 
   var ge = document.getElementById("tl-glow");
-  if(ge) setTimeout(function(){ ge.style.left = (prog * 100) + "%"; }, 300);
+  if (ge) setTimeout(function() { ge.style.left = (prog * 100) + "%"; }, 300);
 
   var tiesContainer = document.getElementById("tl-ties");
   var milestonesContainer = document.getElementById("tl-milestones");
-  if(!tiesContainer || !milestonesContainer) return;
+  if (!tiesContainer || !milestonesContainer) return;
 
-  // 1. Bereken de percentages van de mijlpalen
   var msIndices = [];
-  var TOTAL_TIES = 65; // Totaal aantal strakke bielsen over het spoor
-
-  ms.forEach(function(m){
+  var TOTAL_TIES = 65;
+  ms.forEach(function(m) {
     var pct = (m.date - startDate) / totalSpan;
-    // Zoek welke biels (0 t/m 64) het dichtst bij de mijlpaal ligt
-    var closestIdx = Math.round(pct * (TOTAL_TIES - 1));
-    msIndices.push(closestIdx);
+    msIndices.push(Math.round(pct * (TOTAL_TIES - 1)));
   });
 
-  // 2. Genereer een perfect regelmatig grid van bielsen
   var tiesHtml = "";
-  for(var i = 0; i < TOTAL_TIES; i++) {
+  for (var i = 0; i < TOTAL_TIES; i++) {
     var pct = (i / (TOTAL_TIES - 1)) * 100;
     var tieRatio = i / (TOTAL_TIES - 1);
     var isPassed = tieRatio <= prog;
-    
-    // Check of deze specifieke biels een mijlpaal-biels is
     var msIdx = msIndices.indexOf(i);
-    var isMilestone = msIdx !== -1;
-
     var tieClass = "tl-tie ";
-    if(isMilestone) {
+
+    if (msIdx !== -1) {
       var mDate = ms[msIdx].date;
       var isDone = now > mDate;
-      var isCur = msIdx === ms.reduce(function(c,x,j){return now>=x.date?j:c;},-1);
+      var isCur = msIdx === ms.reduce(function(c, x, j) { return now >= x.date ? j : c; }, -1);
       tieClass += isCur ? "milestone-cur" : (isDone ? "milestone-done" : "milestone-future");
     } else {
       tieClass += isPassed ? "done" : "future";
     }
-
-    tiesHtml += '<div class="'+tieClass+'" style="left:'+pct+'%"></div>';
+    tiesHtml += '<div class="' + tieClass + '" style="left:' + pct + '%"></div>';
   }
-
   tiesContainer.innerHTML = tiesHtml;
 
-  // 3. Plaats de tekstlabels exact onder de gekozen mijlpaal-biels
   var mh = "";
-  ms.forEach(function(m, i){
+  ms.forEach(function(m, i) {
     var closestTieIdx = msIndices[i];
-    var pct = (closestTieIdx / (TOTAL_TIES - 1)) * 100; // Lijn exact uit met de witte biels!
+    var pct = (closestTieIdx / (TOTAL_TIES - 1)) * 100;
     var isDone = now > m.date;
-    var isCur = i === ms.reduce(function(c,x,j){return now>=x.date?j:c;},-1);
+    var isCur = i === ms.reduce(function(c, x, j) { return now >= x.date ? j : c; }, -1);
     var st = isCur ? "cur" : (isDone ? "done" : "future");
-
-    mh += '<div class="tl-ms" style="left:'+pct+'%">' +
-            '<div class="tl-ms-date '+st+'" data-en="'+m.en+'" data-pt="'+m.pt+'">'+m.en+'</div>' +
-            '<div class="tl-ms-label '+st+'" data-en="'+m.ten+'" data-pt="'+m.tpt+'">'+m.ten+'</div>' +
+    mh += '<div class="tl-ms" style="left:' + pct + '%">' +
+            '<div class="tl-ms-date ' + st + '" data-en="' + m.en + '" data-pt="' + m.pt + '">' + m.en + '</div>' +
+            '<div class="tl-ms-label ' + st + '" data-en="' + m.ten + '" data-pt="' + m.tpt + '">' + m.ten + '</div>' +
           '</div>';
   });
-
   milestonesContainer.innerHTML = mh;
 })();
 
-var dkeys=["structures","powertrain","dynamics","electronics","marketing"];
-var dnums=["01","02","03","04","05"];
-function buildGrids(){
-  ["dg","jdg"].forEach(function(id){
-    var g=document.getElementById(id);if(!g)return;g.innerHTML="";
-    dkeys.forEach(function(k,i){
-      var d=DEPTS[k],name=(d.name[lang]||d.name.en),desc=(d.desc[lang]||d.desc.en);
-      var dc=document.createElement("div");dc.className="dc rv";dc.style.transitionDelay=(i*.07)+"s";dc.dataset.dept=k;
-      dc.innerHTML='<div class="dcn" style="color:'+d.col+'">'+dnums[i]+'</div><div class="dct" style="color:'+d.col+'">'+name+'</div><p class="dcd">'+desc+'</p><span class="dca">&#8599;</span>';
-      var s=document.createElement("style");s.textContent='.dc[data-dept="'+k+'"]:after{background:'+d.col+';}';document.head.appendChild(s);
-      if(id==="dg")dc.addEventListener("click",function(){openModal(k);});else dc.addEventListener("click",function(){go("contact");});
-      g.appendChild(dc);
-    });
+// 10. INITIALISATIE BIJ OPSTARTEN
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("a,button,.card,.dc,.nc,.mc,.sp-item,.clink,.pf,.cic-card").forEach(function(el) {
+    el.addEventListener("mouseenter", function() { if ($r) $r.classList.add("big"); });
+    el.addEventListener("mouseleave", function() { if ($r) $r.classList.remove("big"); });
   });
-}
 
-// 2. MODAL MODIFICATION MECHANISM (Renders the actionable items)
-function openModal(k){
-  var d=DEPTS[k],name=(d.name[lang]||d.name.en);
-  var photo=DEPT_PHOTOS[k];
-  var photoHtml=photo?('<div class="mphoto-wrap"><img src="'+photo+'" alt="'+name+'" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:8px;margin-bottom:1.5rem"></div>'):'';
-  var rows=d.members.map(function(m){
-    var role=m.r[lang]||m.r.en;
-    var init=m.n.split(" ").map(function(w){return w[0];}).join("").slice(0,2).toUpperCase();
-    var mphoto=MEMBERS_PHOTOS[m.n];
-    var li=MEMBERS_LI[m.n];var bio=MEMBERS_BIO[m.n]?(MEMBERS_BIO[m.n][lang]||MEMBERS_BIO[m.n].en):"";
-    var email=MEMBERS_EMAIL[m.n];
-    
-    var av=mphoto?'<div class="mav"><img src="'+mphoto+'" alt="'+m.n+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></div>':'<div class="mav-init" style="background:'+d.col+'18;border:1px solid '+d.col+'44;color:'+d.col+'">'+init+'</div>';
-    
-    var actionIcons='';
-    if(li){
-      actionIcons+='<a href="'+li+'" target="_blank" class="mli" title="LinkedIn" style="margin-left:6px;"><svg viewBox="0 0 24 24" style="width:18px;height:18px;display:inline-block;vertical-align:middle;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>';
-    }
-    if(email){
-      actionIcons+='<a href="mailto:'+email+'" class="mli" title="Email" style="margin-left:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;display:inline-block;vertical-align:middle;fill:none;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>';
-    }
-    
-    return '<div class="mrow" style="display:flex;align-items:center;">'+av+'<div class="minfo" style="flex-grow:1;"><div class="mname">'+m.n+'</div><div class="mrole">'+role+'</div>'+(bio?'<div class="mbio">'+bio+'</div>':"")+'</div><div class="mactions" style="display:flex;align-items:center;">'+actionIcons+'</div></div>';
-  }).join("");
-  document.getElementById("mbody").innerHTML='<div style="width:4px;height:28px;background:'+d.col+';margin-bottom:1rem;border-radius:2px"></div><div class="mtit" style="color:'+d.col+'">'+name+'</div><div class="msub">'+(lang==="pt"?"Departamento ISTrain":"ISTrain Department")+'</div>'+photoHtml+'<div class="mlist">'+rows+'</div>';
-  document.getElementById("dmod").classList.add("open");document.body.style.overflow="hidden";
-}
-document.getElementById("mcl").addEventListener("click",closeModal);
-document.getElementById("dmod").addEventListener("click",function(e){if(e.target===this)closeModal();});
-function closeModal(){document.getElementById("dmod").classList.remove("open");document.body.style.overflow="";}
-function go(page){
-  document.getElementById("mobnav").classList.remove("open");
-  document.querySelectorAll(".page").forEach(function(p){p.classList.remove("on");});
-  var el=document.getElementById("page-"+page);if(el)el.classList.add("on");
-  window.scrollTo({top:0,behavior:"smooth"});
-  document.querySelectorAll(".nlinks a").forEach(function(a){a.classList.toggle("on",a.dataset.p===page);});
-  buildGrids();setTimeout(runRev,120);
-}
-function runRev(){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add("v");});},{threshold:.06});document.querySelectorAll(".page.on .rv:not(.v),.page.on .rl:not(.v),.page.on .rr:not(.v)").forEach(function(el){io.observe(el);});}
-runRev();
-window.addEventListener("scroll",function(){document.querySelectorAll(".page.on .rv:not(.v),.page.on .rl:not(.v),.page.on .rr:not(.v)").forEach(function(el){if(el.getBoundingClientRect().top<innerHeight*.93)el.classList.add("v");});});
-setTimeout(function(){document.querySelectorAll("#page-home .rv,#page-home .rl,#page-home .rr").forEach(function(el){if(el.getBoundingClientRect().top<innerHeight*1.1)el.classList.add("v");});},200);
-function showTeam(id){document.querySelectorAll(".team-panel").forEach(function(p){p.classList.remove("on");});document.querySelectorAll(".team-tab").forEach(function(t){t.classList.remove("on");});var p=document.getElementById("panel-"+id);var t=document.getElementById("tab-"+id);if(p)p.classList.add("on");if(t)t.classList.add("on");if(id==="2526")buildGrids();}
-function showScoring(id){document.querySelectorAll(".stab-panel").forEach(function(p){p.classList.remove("on");});document.querySelectorAll(".stab-btn").forEach(function(b){b.classList.remove("on");});var p=document.getElementById("sp-"+id);var b=document.getElementById("stab-"+id);if(p)p.classList.add("on");if(b)b.classList.add("on");}
-function tick(){var d=new Date("2027-06-24T09:00:00"),n=new Date(),diff=d-n;if(diff<=0)return;var da=Math.floor(diff/864e5),hr=Math.floor(diff%864e5/36e5),mi=Math.floor(diff%36e5/6e4),se=Math.floor(diff%6e4/1e3);var e=document.getElementById("cdd");if(e)e.textContent=String(da).padStart(3,"0");e=document.getElementById("cdh");if(e)e.textContent=String(hr).padStart(2,"0");e=document.getElementById("cdm");if(e)e.textContent=String(mi).padStart(2,"0");e=document.getElementById("cds");if(e)e.textContent=String(se).padStart(2,"0");}
-setInterval(tick,1000);tick();
-var hv=document.getElementById("hvid");if(hv){hv.muted=true;var _p=function(){hv.play().catch(function(){});};_p();document.addEventListener("click",_p,{once:true});setTimeout(_p,500);}
+  var mbb = document.getElementById("mbb");
+  if (mbb) mbb.addEventListener("click", function() { document.getElementById("mobnav").classList.add("open"); });
 
-buildGrids();applyLang();
-document.addEventListener("DOMContentLoaded", function () {
+  var cx = document.getElementById("cx");
+  if (cx) cx.addEventListener("click", function() { document.getElementById("mobnav").classList.remove("open"); });
+
+  var hv = document.getElementById("hvid");
+  if (hv) {
+    hv.muted = true;
+    var _p = function() { hv.play().catch(function() {}); };
+    _p();
+    document.addEventListener("click", _p, { once: true });
+    setTimeout(_p, 500);
+  }
+
   applyLang();
+  runRev();
+  setTimeout(runRev, 200);
+
+  var activePage = document.querySelector(".page.on") || document.querySelector('.page[style*="display: block"]');
+  if (!activePage) {
+    go("home");
+  }
 });
