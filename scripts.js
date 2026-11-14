@@ -1,8 +1,8 @@
 var lang = "en";
 
-// 1. FOTO PADEN HUIDIGE LEDEN
+// 1. PHOTO PATHS CURRENT MEMBERS
 var MEMBERS_PHOTOS = {
-  // Board / Directie
+  // Board / 
   "Manuel Barreiras": "About us/Board/Manuel Barreiras.png",
   "Daniel Ferreira": "About us/Board/Daniel Ferreira.png",
   "Diego Araújo": "About us/Board/Diego Araújo.png",
@@ -37,7 +37,7 @@ var MEMBERS_PHOTOS = {
   "Gonçalo Tome": "About us/Vehicle Dynamics/Tome.png"
 };
 
-// 2. LINKEDIN REGISTRY (Namen exact gelijk getrokken aan ALL_DEPARTMENTS)
+// 2. LINKEDIN REGISTRY 
 var MEMBERS_LINKEDIN = {
   "Daniel Ferreira": "https://www.linkedin.com/in/daniel-ferreira-386036278/",
   "Diego Araújo": "https://www.linkedin.com/in/diego-arsenio-araujo/",
@@ -61,7 +61,7 @@ var MEMBERS_LINKEDIN = {
   "Lourenço Vieira": "https://www.linkedin.com/in/lourenco-vieira-65578a224/"
 };
 
-// 3. COMPLETE TEAM & AFDELINGEN DATABASE (EN + PT)
+// 3. COMPLETE TEAM & DEPARTMENTS DATABASE (EN + PT)
 var ALL_DEPARTMENTS = [
   {
     name: { en: "Board", pt: "Direcção" },
@@ -128,7 +128,7 @@ var ALL_DEPARTMENTS = [
   }
 ];
 
-// 4. TAALWISSELING (EN / PT)
+// 4. LANGUAGE SWITCH (EN / PT)
 function applyLang() {
   document.querySelectorAll("[data-en],[data-pt]").forEach(function(el) {
     var val = lang === "pt" ? el.dataset.pt : el.dataset.en;
@@ -157,7 +157,7 @@ function toggleLang() {
   applyLang();
 }
 
-// 5. TEAM PORTRETTEN RENDEREN
+// 5. TEAM PHOTO'S RENDERING
 function renderAllTeamMembers(containerId) {
   var container = document.getElementById(containerId);
   if (!container) return;
@@ -195,7 +195,7 @@ function renderAllTeamMembers(containerId) {
   container.innerHTML = fullHtml;
 }
 
-// 6. PAGINA ROUTING & ANIMATIES
+// 6. PAGE ROUTING & ANIMATIONS
 function go(page) {
   var mobnav = document.getElementById("mobnav");
   if (mobnav) mobnav.classList.remove("open");
@@ -264,7 +264,7 @@ function scrollDepartments(direction) {
   });
 }
 
-// 8. CUSTOM CURSOR, NAVIGATIE & COUNTDOWN
+// 8. CUSTOM CURSOR, NAVIGATION & COUNTDOWN
 var $c = document.getElementById("cur"), $r = document.getElementById("curR");
 var mx = 0, my = 0, rx = 0, ry = 0;
 document.addEventListener("mousemove", function(e) {
@@ -295,7 +295,7 @@ function tick() {
 setInterval(tick, 1000);
 tick();
 
-// 9. TIJDLIJN (HOME)
+// 9. TIMELINE (HOME)
 (function() {
   var ms = [
     { date: new Date("2026-09-01"), en: "Sep 2026", pt: "Set 2026", ten: "Rollout", tpt: "Rollout" },
@@ -360,7 +360,7 @@ tick();
   milestonesContainer.innerHTML = mh;
 })();
 
-// 10. INITIALISATIE BIJ OPSTARTEN
+// 10. INSTALIATION BY STARTING 
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll("a,button,.card,.dc,.nc,.mc,.sp-item,.clink,.pf,.cic-card").forEach(function(el) {
     el.addEventListener("mouseenter", function() { if ($r) $r.classList.add("big"); });
