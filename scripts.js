@@ -23,8 +23,8 @@ var TEAM_DATA = {
       "Rodrigo Oliveira": "About us/Marketing, Operations & Logistics/Rodrigo Oliveira.png",
       "Stijn Meij": "About us/Marketing, Operations & Logistics/Stijn Meij.png",
       "Teresa de Brito": "About us/Marketing, Operations & Logistics/Teresa de Brito.png",
-      "Francisco Teixeira": "About us/Powertrain & Energy Systems/Francisco Teixeira.png",
-      "Miguel Martins": "About us/Powertrain & Energy Systems/Miguel Martins.png",
+      "Francisco Teixeira": "About us/Powertrains & Energy Systems/Francisco Teixeira.png",
+      "Miguel Martins": "About us/Powertrains & Energy Systems/Miguel Martins.png",
       "Lourenço Próspero": "About us/Structures & Aerodynamics/Lourenço Próspero.png",
       "Daniel Pereira": "About us/Structures & Aerodynamics/Daniel.png",
       "Guilherme Marques": "About us/Structures & Aerodynamics/Guilherme Marques.png",
@@ -120,14 +120,90 @@ var TEAM_DATA = {
     ]
   },
 
-  // Season 25/26 - add departments/members here when you have them.
+  // Season 25/26.
+  // No LinkedIn links here on purpose: members who are still on the team in
+  // 26/27 only show their LinkedIn in the 26/27 season.
+  // Photos are set per member (not in a shared "photos" map) because some
+  // people appear in two departments with a different picture in each.
   "2025": {
     label: { en: "2025/2026", pt: "2025/2026" },
-    photos: {
-      "Aliya Ibrahimo": "About us/Board/AliyaIbrahimo.png"
-    },
+    photos: {},
     linkedin: {},
-    departments: []
+    departments: [
+      {
+        name: { en: "Board", pt: "Direcção" },
+        members: [
+          { name: "Aliya Ibrahimo", role: { en: "Team Leader", pt: "Líder da Equipa" },
+            photo: "About us/Marketing, Operations & Logistics/Aliya Ibrahimo_25.png" },
+          { name: "Miguel Meninas", role: { en: "Technical Director", pt: "Diretor Técnico" },
+            photo: "About us/Powertrain & Energy Systems/Miguel Meninas_25.png" }
+        ]
+      },
+      {
+        name: { en: "Electronics & Software", pt: "Eletrónica e Software" },
+        members: [
+          { name: "Tomás Serafim", role: { en: "Department Leader", pt: "Líder de Departamento" },
+            photo: "About us/Electronics & Software/Tomás Serafim_25.png" },
+          { name: "João Sousa", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Electronics & Software/João Sousa_25.png" },
+          { name: "Catarina Santos", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Electronics & Software/Catarina Santos_25.png" },
+        ]
+      },
+      {
+        name: { en: "Powertrain & Energy Systems", pt: "Propulsão e Sistemas de Energia" },
+        members: [
+          { name: "Miguel Meninas", role: { en: "Department Leader", pt: "Líder de Departamento" },
+            photo: "About us/Powertrain & Energy Systems/Miguel Meninas_25.png" },
+          { name: "Francisco Teixeira", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Powertrain & Energy Systems/Francisco Teixeira_25.png" },
+          { name: "Manuel Barreiras", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Powertrain & Energy Systems/Manuel Barreiras_25.png" },
+          { name: "Miguel Martins", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Powertrain & Energy Systems/Miguel Martins_25.png" }
+        ]
+      },
+      {
+        name: { en: "Marketing, Operations & Logistics", pt: "Marketing, Operações e Logística" },
+        members: [
+          { name: "Ana Francisca Rosado", role: { en: "Department Leader Marketing", pt: "Líder de Marketing" },
+            photo: "About us/Marketing, Operations & Logistics/Ana Francisca Rosado_25.png" },
+          { name: "Vasco Carvalho", role: { en: "Department Leader Operations & Logistics", pt: "Líder de Operações e Logística" },
+            photo: "About us/Marketing, Operations & Logistics/Vasco Carvalho_25.png" },
+          { name: "Aliya Ibrahimo", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Marketing, Operations & Logistics/Aliya Ibrahimo_25.png" },
+          { name: "Martim Caetano", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Marketing, Operations & Logistics/Martim Caetano_25.png" },
+          { name: "Pedro Clemente", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Marketing, Operations & Logistics/Pedro Clemente_25.png" },
+          { name: "Rodrigo Oliveira", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Marketing, Operations & Logistics/Rodrigo Oliveira_25.png" },
+          { name: "Stijn Meij", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Marketing, Operations & Logistics/Stijn Meij_25.png" },
+          { name: "Teresa de Brito", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Marketing, Operations & Logistics/Teresa de Brito_25.png" }
+        ]
+      },
+      {
+        name: { en: "Structures & Aerodynamics", pt: "Estruturas e Aerodinâmica" },
+        members: [
+          { name: "Diego Araújo", role: { en: "Department Leader", pt: "Líder de Departamento" },
+            photo: "About us/Structures & Aerodynamics/Diego Araújo_25.png" },
+          { name: "Diogo Nunes", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Structures & Aerodynamics/Diogo Nunes_25.png" },
+          { name: "Francisco Afonso", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Structures & Aerodynamics/Francisco Afonso_25.png" },
+          { name: "Guilherme Marques", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Structures & Aerodynamics/Guilherme Marques_25.png" },
+          { name: "Gustavo Sardinha", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Structures & Aerodynamics/Gustavo Sardinha_25.png" },
+          { name: "Lourenço Próspero", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Structures & Aerodynamics/Lourenço Próspero_25.png" },
+          { name: "Miguel Gouveia", role: { en: "Member", pt: "Membro" },
+            photo: "About us/Structures & Aerodynamics/Miguel Gouveia_25.png" }
+        ]
+      }
+    ]
   }
 };
 
@@ -189,7 +265,9 @@ function renderTeam(year, useLang) {
     html += '<div class="members-grid">';
 
     (dept.members || []).forEach(function (member) {
-      var photo = (season.photos && season.photos[member.name]) || TEAM_FALLBACK_PHOTO;
+      // A per-member "photo" wins, so the same person can appear in two
+      // departments with a different picture in each.
+      var photo = member.photo || (season.photos && season.photos[member.name]) || TEAM_FALLBACK_PHOTO;
       var linkedin = season.linkedin && season.linkedin[member.name];
       var role = (member.role && (member.role[l] || member.role.en)) || "";
       var safeName = escapeHtml(member.name);
